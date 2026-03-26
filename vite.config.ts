@@ -8,5 +8,5 @@ export default defineConfig({
    * GitHub Pages serves from `/<repo>/`, not `/`.
    * Set `GITHUB_PAGES=true` in CI to build with the correct base.
    */
-  base: process.env.GITHUB_PAGES === 'true' ? '/manidhar-portfolio/' : '/',
+  base: '/manidhar-portfolio/',
 })
