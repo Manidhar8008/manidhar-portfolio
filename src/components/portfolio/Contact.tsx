@@ -1,56 +1,79 @@
-type ContactProps = {
-  githubUrl?: string
-  linkedinUrl?: string
-}
-
-function SocialLink({
-  href,
-  label,
-}: {
-  href: string
-  label: string
-}) {
+export default function Contact() {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      className="inline-flex items-center justify-center rounded-lg border border-neutral-800 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-neutral-600 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
-    >
-      {label}
-    </a>
-  )
-}
+    <section id="contact">
+      <div className="container">
+        <div className="contact-inner">
+          <div className="contact-text">
+            <div className="section-header">
+              <span className="section-tag">06 / Contact</span>
+              <h2 className="section-title">
+                Let's <em>build</em> something
+              </h2>
+            </div>
+            <p>
+              Open to AI/ML/Data roles, freelance AI systems work, and
+              collaboration on agentic AI projects.
+            </p>
 
-export default function Contact({ githubUrl, linkedinUrl }: ContactProps) {
-  return (
-    <section
-      id="contact"
-      className="py-20 w-full bg-black text-white"
-      aria-label="Contact"
-    >
-      <div className="max-w-5xl mx-auto px-4">
-        <div className="mb-8">
-          <p className="text-xs tracking-widest uppercase text-neutral-400">
-            Contact
-          </p>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-bold">
-            Let’s build something impactful
-          </h2>
-        </div>
+            <div className="contact-links">
+              <a href="mailto:manidhar@mw.ai" className="contact-link">
+                <span className="contact-link-label">Email</span>
+                <span className="contact-link-val">manidhar@mw.ai</span>
+              </a>
+              <a
+                href="https://linkedin.com"
+                className="contact-link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="contact-link-label">LinkedIn</span>
+                <span className="contact-link-val">
+                  linkedin.com/in/manidhar
+                </span>
+              </a>
+              <a
+                href="https://github.com"
+                className="contact-link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="contact-link-label">GitHub</span>
+                <span className="contact-link-val">github.com/manidhar</span>
+              </a>
+              <a
+                href="https://instagram.com"
+                className="contact-link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="contact-link-label">Instagram</span>
+                <span className="contact-link-val">@mw.ai.systems</span>
+              </a>
+            </div>
+          </div>
 
-        <div className="rounded-2xl border border-neutral-800 bg-neutral-950/30 p-6 sm:p-8">
-          <p className="text-neutral-200 leading-relaxed">
-            If you’re building AI products where behavior, decision-making, and
-            execution matter, I’ll help you design systems that learn from
-            reality and improve outcomes over time.
-          </p>
-
-          <div className="mt-6 flex flex-col sm:flex-row gap-3">
-            {githubUrl ? <SocialLink href={githubUrl} label="GitHub" /> : null}
-            {linkedinUrl ? (
-              <SocialLink href={linkedinUrl} label="LinkedIn" />
-            ) : null}
+          <div className="cta-block">
+            <h3>Why hire me?</h3>
+            <p>
+              I don't bring tutorials. I bring shipped systems, enterprise
+              operational experience, and a rare combination of behavioral
+              psychology + AI execution.
+            </p>
+            <div className="cta-options">
+              <div className="cta-option">6+ real projects with working code on GitHub</div>
+              <div className="cta-option">Enterprise background at Cognizant + Genpact</div>
+              <div className="cta-option">
+                Builds fast with Python + FastAPI + LLMs + local AI
+              </div>
+              <div className="cta-option">Psychology-driven design — systems that actually change behavior</div>
+              <div className="cta-option">Running own AI entity (mw.ai) — founder mindset</div>
+              <div className="cta-option">Execution-first: build → test → ship → iterate</div>
+            </div>
+            <div style={{ marginTop: 32 }}>
+              <a href="mailto:manidhar@mw.ai" className="btn btn-primary">
+                Hire Manidhar
+              </a>
+            </div>
           </div>
         </div>
       </div>

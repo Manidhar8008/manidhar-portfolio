@@ -1,25 +1,28 @@
-import AILab from './components/portfolio/AILab'
+import './components/portfolio/design.css'
+import About from './components/portfolio/About'
 import Contact from './components/portfolio/Contact'
-import DeveloperMode from './components/portfolio/DeveloperMode'
-import Experience from './components/portfolio/Experience'
 import Hero from './components/portfolio/Hero'
-import HowItWorks from './components/portfolio/HowItWorks'
-import Problem from './components/portfolio/Problem'
+import Lab from './components/portfolio/Lab'
 import Projects from './components/portfolio/Projects'
-import Solution from './components/portfolio/Solution'
+import Roadmap from './components/portfolio/Roadmap'
+import Skills from './components/portfolio/Skills'
+import PortfolioEffects from './components/portfolio/PortfolioEffects'
+import PortfolioFooter from './components/portfolio/PortfolioFooter'
+import PortfolioNav from './components/portfolio/PortfolioNav'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <>
+      <PortfolioNav />
+      <PortfolioEffects />
       <Hero />
-      <Problem />
-      <Solution />
+      <About />
+      <Skills />
       <Projects />
-      <HowItWorks />
-      <DeveloperMode />
-      <AILab />
-      <Experience />
+      <Lab />
+      <Roadmap />
       <Contact />
-    </div>
+      <PortfolioFooter />
+    </>
   )
 }

@@ -1,32 +1,68 @@
 export default function Hero() {
   return (
-    <section
-      className="h-screen w-full bg-black flex items-center justify-center px-4"
-      aria-label="Hero"
-    >
-      <div className="max-w-3xl text-center">
-        <h1 className="text-4xl sm:text-6xl font-extrabold leading-tight text-white">
-          I build AI systems that fix human behavior
-        </h1>
+    <section id="hero">
+      <div className="container">
+        <div className="hero-inner" style={{ position: 'relative' }}>
+          <div
+            className="glow-orb"
+            style={{
+              width: 500,
+              height: 500,
+              background: 'rgba(0,245,196,0.04)',
+              top: -200,
+              left: -100,
+            }}
+          />
+          <div
+            className="glow-orb"
+            style={{
+              width: 400,
+              height: 400,
+              background: 'rgba(124,92,252,0.04)',
+              top: 100,
+              right: -50,
+            }}
+          />
 
-        <p className="mt-6 text-base sm:text-lg text-neutral-300">
-          I combine AI, psychology, and automation to build feedback-loop systems
-          that improve discipline, decision-making, and execution.
-        </p>
-
-        <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="#projects"
-            className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-neutral-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-          >
-            View Projects
-          </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center justify-center rounded-lg border border-neutral-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-neutral-400 hover:bg-neutral-900/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
-          >
-            Work With Me
-          </a>
+          <div className="hero-tag">
+            Available for AI / Data roles · Remote or Hyderabad
+          </div>
+          <h1 className="hero-name">
+            MANI<span>DHAR</span>
+            <span className="cursor"></span>
+          </h1>
+          <p className="hero-subtitle">
+            <strong>AI Systems Builder.</strong> I combine behavioral
+            psychology, data analytics, and agentic AI to build tools that
+            solve real problems — not demos, not tutorials. Execution-first
+            mindset from a non-traditional path.
+          </p>
+          <div className="hero-cta">
+            <a href="#projects" className="btn btn-primary">
+              See My Work
+            </a>
+            <a href="#contact" className="btn btn-secondary">
+              Let's Talk
+            </a>
+          </div>
+          <div className="hero-stats">
+            <div>
+              <div className="stat-num">6+</div>
+              <div className="stat-label">Projects Shipped</div>
+            </div>
+            <div>
+              <div className="stat-num">3yr</div>
+              <div className="stat-label">Building AI Systems</div>
+            </div>
+            <div>
+              <div className="stat-num">2x</div>
+              <div className="stat-label">Enterprise Experience</div>
+            </div>
+            <div>
+              <div className="stat-num">∞</div>
+              <div className="stat-label">Systems in Progress</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

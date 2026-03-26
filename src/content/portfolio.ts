@@ -1,131 +1,164 @@
-export type ProjectLink = {
-  label: 'GitHub' | 'Demo' | 'Video'
+export type SocialLink = {
+  label: 'GitHub' | 'LinkedIn'
   href: string
 }
 
-export type PortfolioProject = {
-  id: 'discipline' | 'hiring-assistant' | 'analytics'
+export type Project = {
+  id: 'janani-ai' | 'algo-trading-ml'
   title: string
-  oneLiner: string
   description: string
-  tech: string[]
-  links: ProjectLink[]
+  focus: string
+  techStack: string[]
+  features: string[]
+  githubUrl: string
+  githubLabel?: string
+  demoUrl?: string
+  videoUrl?: string
+}
+
+export type RoadmapItem = {
+  phase: 'Now' | 'Next' | 'Later'
+  title: string
   bullets: string[]
 }
 
-export type CaseStudy = {
-  positioning: string
-  problem: {
+export type PortfolioData = {
+  name: string
+  headline: string
+  subheadline: string
+  about: {
     title: string
     bullets: string[]
   }
-  solution: {
+  skills: {
+    eyebrow: string
+    items: string[]
+    principles: string[]
+  }
+  projects: Project[]
+  lab: {
     title: string
     bullets: string[]
   }
-  howItWorks: {
+  roadmap: {
     title: string
-    bullets: string[]
+    items: RoadmapItem[]
   }
-  results: {
-    title: string
-    bullets: string[]
-  }
-  future: {
-    title: string
-    bullets: string[]
+  contact: {
+    cta: string
+    links: SocialLink[]
   }
 }
 
-export const CASE_STUDY: CaseStudy = {
-  positioning:
-    'I build AI systems that fix human behavior using AI, psychology, and automation.',
-  problem: {
-    title: 'The problem I’m solving',
+const GITHUB_PROFILE_URL = 'https://github.com/Manidhar8008'
+
+export const PORTFOLIO: PortfolioData = {
+  name: 'Manidhar',
+  headline: 'I build AI systems that fix human behavior',
+  subheadline:
+    'Using AI, psychology, and automation to turn behavior into measurable signals, then improve decision-making and follow-through through feedback loops.',
+  about: {
+    title: 'AI systems with behavior-grade intent',
     bullets: [
-      'Most “productivity” systems fail because they rely on willpower instead of feedback loops.',
-      'People don’t need more motivation—they need friction removed and consequences made visible.',
-      'Execution breaks when tracking is manual, insights are delayed, and reinforcement is inconsistent.',
+      'Personal discipline AI: behavior tracking + reinforcement loops (not generic coaching).',
+      'Decision automation: reduce friction with logs, policies, and constrained LLM outputs.',
+      'A builder mindset: prove the system end-to-end (data -> policy -> intervention -> evaluation).',
     ],
   },
-  solution: {
-    title: 'The solution: a Personal AI System (not a chatbot)',
-    bullets: [
-      'A discipline engine that converts daily behavior into signals, then applies reinforcement loops.',
-      'An AI Hiring Assistant that standardizes evaluation and reduces noisy interviews.',
-      'Analytics projects that prove I can turn raw data into decisions (SQL + Python + dashboards).',
+  skills: {
+    eyebrow: 'Skills',
+    items: [
+      'Python',
+      'FastAPI',
+      'PostgreSQL',
+      'Ollama (local LLM)',
+      'LLM orchestration + structured outputs',
+      'Automation engineering',
+      'SQL + data analysis',
+      'System design for feedback loops',
+    ],
+    principles: [
+      'Constrained LLM outputs tied to logged behavior.',
+      'Operational logging that enables iteration and debugging.',
+      'Data-to-policy-to-intervention pipelines designed for reliability.',
     ],
   },
-  howItWorks: {
-    title: 'How it works (system design)',
+  projects: [
+    {
+      id: 'janani-ai',
+      title: 'Janani AI',
+      description:
+        'AI-powered behavior + media management system that turns actions into signals, then uses automation and local LLM coaching to reinforce discipline.',
+      focus: 'Personal discipline + behavioral AI',
+      techStack: ['Python', 'FastAPI', 'PostgreSQL', 'Ollama', 'Automation', 'Tracking'],
+      features: [
+        'Behavior tracking that converts daily actions into measurable signals.',
+        'Automation layer for interventions and media workflow support.',
+        'LLM-driven coaching constrained by logged behavior (feedback-loop design).',
+      ],
+      githubUrl: GITHUB_PROFILE_URL,
+      githubLabel: 'GitHub (profile)',
+    },
+    {
+      id: 'algo-trading-ml',
+      title: 'Algo Trading ML System',
+      description:
+        'ML-based trading strategy system with backtesting and automation, designed for decision automation with logging and analytics.',
+      focus: 'Decision automation + analytics',
+      techStack: ['Python', 'ML', 'Backtesting', 'Automation', 'Data analysis', 'Logging'],
+      features: [
+        'Backtesting pipeline designed to evaluate strategies before automation.',
+        'Execution automation with structured logging for audit and iteration.',
+        'Analytics layer to support threshold tuning and better decision quality.',
+      ],
+      githubUrl: GITHUB_PROFILE_URL,
+      githubLabel: 'GitHub (profile)',
+    },
+  ],
+  lab: {
+    title: 'AI Lab: behavioral systems research',
     bullets: [
-      'Event capture → store in PostgreSQL as atomic actions (what happened, when, context).',
-      'Policy layer → rules + prompts that choose the right intervention (nudge, plan, constraint).',
-      'LLM layer (Ollama local) → reasoning + coaching, but constrained by logged behavior.',
-      'Feedback loop → interventions are evaluated by subsequent actions, not vibes.',
+      'Behavioral tracking systems: translate actions into signals that can be improved.',
+      'Agentic AI experiments: test loops where the model learns from what happens next.',
+      'Automation tools: deploy interventions that reduce friction and increase follow-through.',
     ],
   },
-  results: {
-    title: 'Results (current)',
-    bullets: [
-      'MVP architecture defined as a multi-service system: API + DB + local LLM + web frontend.',
-      'Portfolio is structured as a case-study product page—proof-first, not resume-first.',
-      'Next measurable outputs are designed in (discipline adherence, interview scoring consistency, analytics latency).',
+  roadmap: {
+    title: 'Roadmap',
+    items: [
+      {
+        phase: 'Now',
+        title: 'Recruiter-grade portfolio product',
+        bullets: [
+          'Structure the site as proof of work (problem -> system -> architecture -> implementation).',
+          'Add missing project artifacts (repo-specific links, demos/videos) as you provide them.',
+        ],
+      },
+      {
+        phase: 'Next',
+        title: 'Evaluation harness + behavioral scoring',
+        bullets: [
+          'Add a behavior evaluation harness that scores interventions by subsequent actions.',
+          'Implement a “behavior score” model using leading indicators.',
+        ],
+      },
+      {
+        phase: 'Later',
+        title: 'Deployment hardening',
+        bullets: [
+          'Run background workers for scheduled interventions.',
+          'Add HTTPS deployment and monitoring for production reliability.',
+        ],
+      },
     ],
   },
-  future: {
-    title: 'Future improvements',
-    bullets: [
-      'Add a “Behavior Score” model: leading indicators + drift tracking over time.',
-      'Introduce an evaluation harness for prompts/tools (regression tests for interventions).',
-      'Add role-specific hiring rubrics + calibration datasets for consistent candidate scoring.',
-      'Deploy backend on a small VM with HTTPS + background workers for scheduled interventions.',
+  contact: {
+    cta: "Let's build something impactful",
+    links: [
+      { label: 'GitHub', href: GITHUB_PROFILE_URL },
+      // LinkedIn not provided yet. Add it when you share your URL.
     ],
   },
 }
 
-export const PROJECTS: PortfolioProject[] = [
-  {
-    id: 'discipline',
-    title: 'Personal AI Discipline System',
-    oneLiner: 'Agentic discipline engine built on feedback loops.',
-    description:
-      'An agentic AI system that tracks behavior, reinforces habits, and improves discipline using feedback loops.',
-    tech: ['Python', 'FastAPI', 'PostgreSQL', 'Ollama'],
-    links: [],
-    bullets: [
-      'Behavior tracking that turns daily actions into measurable signals.',
-      'Feedback loops that adapt reinforcement based on what actually happened.',
-      'Interventions designed to reduce friction and increase follow-through.',
-    ],
-  },
-  {
-    id: 'hiring-assistant',
-    title: 'AI Hiring Assistant',
-    oneLiner: 'Interview simulation + dynamic evaluation.',
-    description:
-      'LLM-powered chatbot that simulates interviews and evaluates candidate responses dynamically.',
-    tech: ['Python', 'LLM APIs', 'Streamlit'],
-    links: [],
-    bullets: [
-      'Adaptive interview flow based on candidate responses.',
-      'Dynamic evaluation aligned to the target role’s rubric.',
-      'A fast UI for iteration and better interviewer consistency.',
-    ],
-  },
-  {
-    id: 'analytics',
-    title: 'Data Analytics Systems',
-    oneLiner: 'SQL + Python analytics that drive decisions.',
-    description:
-      'Data analytics projects focused on turning operational data into reliable dashboards, insights, and automation triggers.',
-    tech: ['Python', 'SQL', 'Dashboards', 'Automation'],
-    links: [],
-    bullets: [
-      'Clean metrics definitions and consistent transformations.',
-      'Dashboards that surface leading indicators (not vanity metrics).',
-      'Automation hooks that turn insights into action.',
-    ],
-  },
-]
 

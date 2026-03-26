@@ -1,128 +1,183 @@
-import { useMemo, useState } from 'react'
-import { PROJECTS } from '../../content/portfolio'
-import Section from './Section'
-
 export default function Projects() {
-  const [activeId, setActiveId] = useState<string | null>(null)
-
-  const activeProject = useMemo(
-    () => PROJECTS.find((p) => p.id === activeId) ?? null,
-    [activeId],
-  )
-
   return (
-    <Section
-      id="projects"
-      eyebrow="Projects"
-      title="Proof of work: systems that change behavior"
-    >
-        <div className="grid gap-6">
-          {PROJECTS.map((project) => {
-            const isActive = project.id === activeId
+    <section id="projects">
+      <div className="container">
+        <div className="section-header">
+          <span className="section-tag">03 / Projects</span>
+          <h2 className="section-title">
+            Proof of <em>execution</em>
+          </h2>
+        </div>
 
-            return (
-              <article
-                key={project.id}
-                className={[
-                  'rounded-2xl border bg-neutral-950/30 p-6 transition-colors',
-                  'border-neutral-800 hover:border-neutral-600',
-                  isActive ? 'border-neutral-600' : '',
-                ].join(' ')}
-                aria-label={project.title}
-              >
-                <div className="flex flex-col gap-4">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <h3 className="text-xl font-semibold text-white">
-                        {project.title}
-                      </h3>
-                      <p className="mt-1 text-sm text-neutral-400">
-                        {project.oneLiner}
-                      </p>
-                      <p className="mt-2 text-neutral-300 leading-relaxed">
-                        {project.description}
-                      </p>
-                    </div>
+        <div className="projects-grid">
+          {/* FLAGSHIP */}
+          <div className="project-card flagship">
+            <div className="project-header">
+              <span className="project-num">FLAGSHIP / 01</span>
+              <span className="project-status status-building">BUILDING</span>
+            </div>
 
-                    <div className="shrink-0">
-                      <button
-                        type="button"
-                        onClick={() => setActiveId(isActive ? null : project.id)}
-                        className={[
-                          'rounded-lg px-4 py-2 text-sm font-semibold',
-                          'transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40',
-                          isActive
-                            ? 'bg-neutral-200 text-black hover:bg-neutral-200/90'
-                            : 'bg-white/10 text-white hover:bg-white/15 border border-white/10',
-                        ].join(' ')}
-                      >
-                        View Project
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-full border border-neutral-800 bg-black/40 px-3 py-1 text-xs text-neutral-200"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-
-                  {project.links.length > 0 && (
-                    <div className="flex flex-wrap gap-3 pt-1">
-                      {project.links.map((l) => (
-                        <a
-                          key={`${project.id}-${l.label}`}
-                          href={l.href}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="text-sm font-semibold text-white/90 underline decoration-white/20 underline-offset-4 hover:decoration-white/50"
-                        >
-                          {l.label}
-                        </a>
-                      ))}
-                    </div>
-                  )}
+            <div className="flagship-grid">
+              <div>
+                <h3 className="project-title">Personal AI Discipline System</h3>
+                <p className="project-desc">
+                  A self-built agentic AI system that improves discipline, habits,
+                  and productivity through behavioral tracking and LLM-driven
+                  reinforcement loops. This is the core of what became JANANI.AI —
+                  built to solve real personal inconsistency, not as a tutorial
+                  project.
+                </p>
+                <div className="project-tech">
+                  <span className="tech-tag">Python</span>
+                  <span className="tech-tag">FastAPI</span>
+                  <span className="tech-tag">PostgreSQL</span>
+                  <span className="tech-tag">Ollama</span>
+                  <span className="tech-tag">Behavioral AI</span>
                 </div>
+              </div>
 
-                {isActive && (
-                  <div className="mt-5 border-t border-neutral-800 pt-4">
-                    <p className="text-sm text-neutral-200 font-medium">
-                      System highlights
-                    </p>
-                    <ul className="mt-3 space-y-2 text-sm text-neutral-300">
-                      {project.bullets.map((h) => (
-                        <li key={h} className="flex gap-2">
-                          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-neutral-500" />
-                          <span>{h}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <p className="mt-4 text-xs text-neutral-500">
-                      Click “View Project” again to collapse.
-                    </p>
-                  </div>
-                )}
-              </article>
-            )
-          })}
-        </div>
+              <div>
+                <ul className="project-features">
+                  <li>Daily task tracking + behavioral logging</li>
+                  <li>Routine alerts (yoga, focus blocks)</li>
+                  <li>LLM-based personalized feedback loop</li>
+                  <li>PostgreSQL-backed memory system</li>
+                  <li>Modular agent design (Self-AI, Consumption-AI)</li>
+                  <li>Evolving into multi-agent ecosystem</li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-        <div className="mt-8 text-center text-sm text-neutral-500">
-          {activeProject ? (
-            <span>
-              Currently showing:{' '}
-              <span className="text-neutral-300">{activeProject.title}</span>
-            </span>
-          ) : (
-            <span>Select a project to see highlights.</span>
-          )}
+          {/* ALGO TRADING */}
+          <div className="project-card">
+            <div className="project-header">
+              <span className="project-num">02</span>
+              <span className="project-status status-live">
+                LIVE ON GITHUB
+              </span>
+            </div>
+            <h3 className="project-title">Algo-Trading ML Automation</h3>
+            <p className="project-desc">
+              End-to-end trading automation system using rule-based + ML
+              logic. RSI and moving average crossover strategies with
+              automated signal generation and Google Sheets logging.
+            </p>
+            <ul className="project-features">
+              <li>RSI + MA crossover strategy</li>
+              <li>Stock data API integration</li>
+              <li>Automated trade signal generation</li>
+              <li>Google Sheets logging pipeline</li>
+            </ul>
+            <div className="project-tech">
+              <span className="tech-tag">Python</span>
+              <span className="tech-tag">APIs</span>
+              <span className="tech-tag">Data Analysis</span>
+            </div>
+          </div>
+
+          {/* HIRING ASSISTANT */}
+          <div className="project-card">
+            <div className="project-header">
+              <span className="project-num">03</span>
+              <span className="project-status status-live">COMPLETE</span>
+            </div>
+            <h3 className="project-title">AI Hiring Assistant Chatbot</h3>
+            <p className="project-desc">
+              LLM-powered chatbot simulating a hiring assistant with
+              context-aware conversation, technical question generation, and
+              candidate evaluation logic.
+            </p>
+            <ul className="project-features">
+              <li>Context-aware multi-turn conversation</li>
+              <li>Technical question generation by role</li>
+              <li>Candidate interaction flow design</li>
+              <li>Evaluation + scoring logic</li>
+            </ul>
+            <div className="project-tech">
+              <span className="tech-tag">Python</span>
+              <span className="tech-tag">LLM APIs</span>
+              <span className="tech-tag">Streamlit</span>
+            </div>
+          </div>
+
+          {/* JANANI */}
+          <div className="project-card">
+            <div className="project-header">
+              <span className="project-num">04</span>
+              <span className="project-status status-mvp">MVP STAGE</span>
+            </div>
+            <h3 className="project-title">JANANI.AI</h3>
+            <p className="project-desc">
+              40-day behavioral transformation AI companion. Privacy-first,
+              local inference. Built for Tier-2 India students and young
+              professionals. GTM targeting colleges and the Indian diaspora in
+              Singapore/UAE.
+            </p>
+            <ul className="project-features">
+              <li>40-day transformation framework</li>
+              <li>Local inference via Ollama (privacy-first)</li>
+              <li>Whisper for voice input</li>
+              <li>FastAPI + PostgreSQL backend</li>
+            </ul>
+            <div className="project-tech">
+              <span className="tech-tag">FastAPI</span>
+              <span className="tech-tag">Ollama</span>
+              <span className="tech-tag">Whisper</span>
+              <span className="tech-tag">PostgreSQL</span>
+            </div>
+          </div>
+
+          {/* NETFLIX */}
+          <div className="project-card">
+            <div className="project-header">
+              <span className="project-num">05</span>
+              <span className="project-status status-live">COMPLETE</span>
+            </div>
+            <h3 className="project-title">Netflix Data Analysis</h3>
+            <p className="project-desc">
+              End-to-end data analysis project extracting business insights
+              from the Netflix dataset — cleaning, trend analysis, and
+              visualization dashboards.
+            </p>
+            <ul className="project-features">
+              <li>Data cleaning and preprocessing</li>
+              <li>Trend and content analysis</li>
+              <li>Business insight dashboards</li>
+            </ul>
+            <div className="project-tech">
+              <span className="tech-tag">Python</span>
+              <span className="tech-tag">Pandas</span>
+              <span className="tech-tag">Visualization</span>
+            </div>
+          </div>
+
+          {/* RETAIL */}
+          <div className="project-card">
+            <div className="project-header">
+              <span className="project-num">06</span>
+              <span className="project-status status-live">COMPLETE</span>
+            </div>
+            <h3 className="project-title">UCI Online Retail Analysis</h3>
+            <p className="project-desc">
+              Structured data analytics project on customer and sales data —
+              transaction analysis, customer segmentation, and revenue pattern
+              modeling.
+            </p>
+            <ul className="project-features">
+              <li>Transaction cohort analysis</li>
+              <li>Customer segmentation (RFM)</li>
+              <li>Revenue pattern modeling</li>
+            </ul>
+            <div className="project-tech">
+              <span className="tech-tag">Python</span>
+              <span className="tech-tag">Pandas</span>
+              <span className="tech-tag">SQL</span>
+            </div>
+          </div>
         </div>
-    </Section>
+      </div>
+    </section>
   )
 }
 
