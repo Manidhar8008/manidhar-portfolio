@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manidhar — AI Systems Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg2: #111118;
+  --bg3: #18181f;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --text: #e8e8f0;
+  --muted: #888898;
+  --accent: #00f5c4;
+  --accent2: #7c5cfc;
+  --accent3: #f05454;
+  --mono: 'Space Mono', monospace;
+  --sans: 'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* --- NOISE OVERLAY --- */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* --- GRID LINES --- */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,245,196,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,245,196,0.018) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- NAV --- */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 900;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px;
+  height: 60px;
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex; gap: 32px; list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+/* --- SECTIONS --- */
+section { position: relative; z-index: 10; }
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* --- HERO --- */
+#hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding-top: 60px;
+}
+
+.hero-inner {
+  padding: 100px 0 80px;
+}
+
+.hero-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  padding: 4px 12px;
+  border: 1px solid rgba(0,245,196,0.3);
+  border-radius: 2px;
+  margin-bottom: 28px;
+  text-transform: uppercase;
+}
+
+.hero-name {
+  font-family: var(--mono);
+  font-size: clamp(52px, 8vw, 88px);
+  font-weight: 700;
+  line-height: 0.95;
+  color: #fff;
+  margin-bottom: 20px;
+  letter-spacing: -0.03em;
+}
+
+.hero-name span {
+  color: var(--accent);
+  position: relative;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  color: var(--muted);
+  max-width: 580px;
+  margin-bottom: 48px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.hero-subtitle strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.hero-cta {
+  display: flex; gap: 16px; flex-wrap: wrap;
+}
+
+.btn {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  padding: 12px 28px;
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+  font-weight: 700;
+  border: 1px solid var(--accent);
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--accent);
+  box-shadow: 0 0 24px rgba(0,245,196,0.2);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border2);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.hero-stats {
+  display: flex; gap: 48px;
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+
+.stat-num {
+  font-family: var(--mono);
+  font-size: 32px;
+  color: var(--accent);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+  letter-spacing: 0.04em;
+}
+
+/* --- SECTION HEADER --- */
+.section-header {
+  margin-bottom: 64px;
+}
+
+.section-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.section-title {
+  font-family: var(--mono);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.section-title em {
+  color: var(--accent2);
+  font-style: normal;
+}
+
+/* --- ABOUT --- */
+#about {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about-text p {
+  color: var(--muted);
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.about-text p strong {
+  color: var(--text);
+}
+
+.about-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.identity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: border-color 0.2s;
+}
+
+.identity-item:hover {
+  border-color: var(--border2);
+}
+
+.identity-icon {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  background: rgba(0,245,196,0.08);
+  padding: 4px 8px;
+  border-radius: 2px;
+  white-space: nowrap;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.identity-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.identity-desc {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* --- SKILLS --- */
+#skills {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+  background: var(--bg2);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.skill-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 28px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.skill-card:hover {
+  border-color: rgba(0,245,196,0.3);
+  transform: translateY(-2px);
+}
+
+.skill-card-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  font-size: 12px;
+  color: var(--muted);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+
+.skill-tag:hover {
+  color: var(--text);
+  border-color: var(--border2);
+}
+
+.skill-tag.hot {
+  color: var(--accent);
+  border-color: rgba(0,245,196,0.25);
+  background: rgba(0,245,196,0.05);
+}
+
+/* --- PROJECTS --- */
+#projects {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.project-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.project-card:hover::before { transform: scaleX(1); }
+
+.project-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-3px);
+}
+
+.project-card.flagship {
+  grid-column: span 2;
+  background: var(--bg3);
+  border-color: rgba(0,245,196,0.2);
+}
+
+.project-card.flagship::before {
+  transform: scaleX(1);
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+
+.project-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.project-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: rgba(0,245,196,0.4);
+  letter-spacing: 0.1em;
+}
+
+.project-status {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+
+.status-live {
+  background: rgba(0,245,196,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(0,245,196,0.25);
+}
+
+.status-building {
+  background: rgba(124,92,252,0.1);
+  color: var(--accent2);
+  border: 1px solid rgba(124,92,252,0.25);
+}
+
+.status-mvp {
+  background: rgba(240,84,84,0.1);
+  color: var(--accent3);
+  border: 1px solid rgba(240,84,84,0.25);
+}
+
+.project-title {
+  font-family: var(--mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.project-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.project-features {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.project-features li {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.project-features li::before {
+  content: '→';
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.tech-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent2);
+  background: rgba(124,92,252,0.08);
+  border: 1px solid rgba(124,92,252,0.2);
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+
+.flagship-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 8px;
+}
+
+/* --- LAB --- */
+#lab {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+  background: var(--bg2);
+}
+
+.lab-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.lab-text .section-title { margin-bottom: 24px; }
+
+.lab-text p {
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.lab-terminal {
+  background: #0d0d12;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--bg3);
+  border-bottom: 1px solid var(--border);
+}
+
+.terminal-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+}
+
+.terminal-code {
+  padding: 24px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.t-comment { color: #4a4a5c; }
+.t-key { color: var(--accent2); }
+.t-val { color: var(--accent); }
+.t-str { color: #f0a05a; }
+.t-muted { color: var(--muted); }
+
+/* --- ROADMAP --- */
+#roadmap {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+}
+
+.roadmap-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 800px;
+}
+
+.roadmap-item {
+  display: flex;
+  gap: 32px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.roadmap-item:last-child { border-bottom: none; }
+
+.roadmap-phase {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  min-width: 100px;
+  padding-top: 4px;
+}
+
+.roadmap-content {}
+
+.roadmap-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.roadmap-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* --- CONTACT --- */
+#contact {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+  background: var(--bg2);
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact-text .section-title { margin-bottom: 20px; }
+
+.contact-text p {
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+
+.contact-link:hover {
+  border-color: rgba(0,245,196,0.3);
+}
+
+.contact-link-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  min-width: 70px;
+}
+
+.contact-link-val {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.cta-block {
+  background: var(--bg3);
+  border: 1px solid rgba(0,245,196,0.2);
+  border-radius: 4px;
+  padding: 40px;
+}
+
+.cta-block h3 {
+  font-family: var(--mono);
+  font-size: 20px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.cta-block p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.cta-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cta-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.cta-option::before {
+  content: '✓';
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+/* --- FOOTER --- */
+footer {
+  padding: 32px 40px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+}
+
+.footer-text {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+.footer-text span { color: var(--accent); }
+
+/* --- GLOW ORBS --- */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hero-inner > * {
+  animation: fadeUp 0.7s ease forwards;
+  opacity: 0;
+}
+
+.hero-tag    { animation-delay: 0.1s; }
+.hero-name   { animation-delay: 0.2s; }
+.hero-subtitle { animation-delay: 0.35s; }
+.hero-cta    { animation-delay: 0.5s; }
+.hero-stats  { animation-delay: 0.65s; }
+
+.cursor {
+  display: inline-block;
+  width: 3px; height: 0.85em;
+  background: var(--accent);
+  vertical-align: text-bottom;
+  margin-left: 4px;
+  animation: blink 1s step-end infinite;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .container { padding: 0 20px; }
+  .about-grid, .lab-inner, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-card.flagship { grid-column: span 1; }
+  .flagship-grid { grid-template-columns: 1fr; gap: 24px; }
+  .hero-stats { gap: 24px; flex-wrap: wrap; }
+  footer { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+@media (max-width: 600px) {
+  .skills-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">MW.AI</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#lab">Lab</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner" style="position:relative;">
+      <div class="glow-orb" style="width:500px;height:500px;background:rgba(0,245,196,0.04);top:-200px;left:-100px;"></div>
+      <div class="glow-orb" style="width:400px;height:400px;background:rgba(124,92,252,0.04);top:100px;right:-50px;"></div>
+
+      <div class="hero-tag">Available for AI / Data roles · Remote or Hyderabad</div>
+      <h1 class="hero-name">
+        MANI<span>DHAR</span><span class="cursor"></span>
+      </h1>
+      <p class="hero-subtitle">
+        <strong>AI Systems Builder.</strong> I combine behavioral psychology, data analytics,
+        and agentic AI to build tools that solve real problems — not demos, not tutorials.
+        Execution-first mindset from a non-traditional path.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">See My Work</a>
+        <a href="#contact" class="btn btn-secondary">Let's Talk</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Projects Shipped</div>
+        </div>
+        <div>
+          <div class="stat-num">3yr</div>
+          <div class="stat-label">Building AI Systems</div>
+        </div>
+        <div>
+          <div class="stat-num">2x</div>
+          <div class="stat-label">Enterprise Experience</div>
+        </div>
+        <div>
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Systems in Progress</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-header">
+          <span class="section-tag">01 / About</span>
+          <h2 class="section-title">Non-traditional.<br><em>Execution-first.</em></h2>
+        </div>
+        <p>
+          I came from enterprise operations at <strong>Cognizant</strong> and <strong>Genpact</strong> — IoT analytics,
+          financial modeling, NLP automation — and turned that problem-solving discipline
+          into a full AI systems practice.
+        </p>
+        <p>
+          I don't build tutorials. I build systems that work in the real world:
+          behavioral reinforcement loops, agentic AI workflows, financial automation pipelines.
+          Psychology informs the design; Python executes it.
+        </p>
+        <p>
+          Based between <strong>Warangal and Bengaluru</strong>. Targeting AI/ML/Data roles at
+          high-growth companies, while running <strong>mw.ai data systems</strong> — my own
+          AI-first solopreneur entity.
+        </p>
+      </div>
+      <div class="about-identity">
+        <div class="identity-item">
+          <span class="identity-icon">01</span>
+          <div>
+            <div class="identity-label">AI Systems Builder</div>
+            <div class="identity-desc">Agentic AI, LLM integration, multi-agent architectures</div>
+          </div>
+        </div>
+        <div class="identity-item">
+          <span class="identity-icon">02</span>
+          <div>
+            <div class="identity-label">Data Analyst & ML Practitioner</div>
+            <div class="identity-desc">End-to-end pipelines from raw data to business decisions</div>
+          </div>
+        </div>
+        <div class="identity-item">
+          <span class="identity-icon">03</span>
+          <div>
+            <div class="identity-label">Behavioral Systems Designer</div>
+            <div class="identity-desc">Psychology-driven tools for discipline and habit formation</div>
+          </div>
+        </div>
+        <div class="identity-item">
+          <span class="identity-icon">04</span>
+          <div>
+            <div class="identity-label">Financial Systems Thinker</div>
+            <div class="identity-desc">FP&amp;A background meets algorithmic trading automation</div>
+          </div>
+        </div>
+        <div class="identity-item">
+          <span class="identity-icon">05</span>
+          <div>
+            <div class="identity-label">Solopreneur (mw.ai)</div>
+            <div class="identity-desc">AI-driven SaaS, CRM, and automation for SMBs</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">02 / Skills</span>
+      <h2 class="section-title">What I <em>build</em> with</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-title">Core Stack</div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">Python</span>
+          <span class="skill-tag hot">FastAPI</span>
+          <span class="skill-tag hot">PostgreSQL</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Git / GitHub</span>
+          <span class="skill-tag">React + Vite</span>
+          <span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">Tailwind CSS</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">AI / ML / Agentic Systems</div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">Ollama (local LLMs)</span>
+          <span class="skill-tag hot">LLM Integration</span>
+          <span class="skill-tag hot">Agentic AI Design</span>
+          <span class="skill-tag">Prompt Engineering</span>
+          <span class="skill-tag">Memory Systems</span>
+          <span class="skill-tag">RAG Pipelines</span>
+          <span class="skill-tag">Behavioral AI</span>
+          <span class="skill-tag">OpenAI API</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Data & Analytics</div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">Pandas / NumPy</span>
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">Excel (Advanced)</span>
+          <span class="skill-tag">Data Cleaning</span>
+          <span class="skill-tag">Visualization</span>
+          <span class="skill-tag">EDA</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Domain Knowledge</div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">Behavioral Psychology</span>
+          <span class="skill-tag">FP&amp;A</span>
+          <span class="skill-tag">Algo Trading</span>
+          <span class="skill-tag">IoT Analytics</span>
+          <span class="skill-tag">Document Intelligence</span>
+          <span class="skill-tag">NLP Automation</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Tools & Platforms</div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">VS Code</span>
+          <span class="skill-tag">pgAdmin</span>
+          <span class="skill-tag">Streamlit</span>
+          <span class="skill-tag">Gradio</span>
+          <span class="skill-tag">Cursor IDE</span>
+          <span class="skill-tag">GitHub Pages</span>
+          <span class="skill-tag">Google Colab</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">In Progress</div>
+        <div class="skill-tags">
+          <span class="skill-tag">LoRA Fine-tuning</span>
+          <span class="skill-tag">Unsloth</span>
+          <span class="skill-tag">Multi-agent Systems</span>
+          <span class="skill-tag">WhatsApp Automation</span>
+          <span class="skill-tag">APScheduler</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">03 / Projects</span>
+      <h2 class="section-title">Proof of <em>execution</em></h2>
+    </div>
+    <div class="projects-grid">
+
+      <!-- FLAGSHIP -->
+      <div class="project-card flagship">
+        <div class="project-header">
+          <span class="project-num">FLAGSHIP / 01</span>
+          <span class="project-status status-building">BUILDING</span>
+        </div>
+        <div class="flagship-grid">
+          <div>
+            <h3 class="project-title">Personal AI Discipline System</h3>
+            <p class="project-desc">
+              A self-built agentic AI system that improves discipline, habits, and productivity
+              through behavioral tracking and LLM-driven reinforcement loops.
+              This is the core of what became JANANI.AI — built to solve real personal inconsistency,
+              not as a tutorial project.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Ollama</span>
+              <span class="tech-tag">Behavioral AI</span>
+            </div>
+          </div>
+          <div>
+            <ul class="project-features">
+              <li>Daily task tracking + behavioral logging</li>
+              <li>Routine alerts (yoga, focus blocks)</li>
+              <li>LLM-based personalized feedback loop</li>
+              <li>PostgreSQL-backed memory system</li>
+              <li>Modular agent design (Self-AI, Consumption-AI)</li>
+              <li>Evolving into multi-agent ecosystem</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ALGO TRADING -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-num">02</span>
+          <span class="project-status status-live">LIVE ON GITHUB</span>
+        </div>
+        <h3 class="project-title">Algo-Trading ML Automation</h3>
+        <p class="project-desc">
+          End-to-end trading automation system using rule-based + ML logic.
+          RSI and moving average crossover strategies with automated signal generation
+          and Google Sheets logging.
+        </p>
+        <ul class="project-features">
+          <li>RSI + MA crossover strategy</li>
+          <li>Stock data API integration</li>
+          <li>Automated trade signal generation</li>
+          <li>Google Sheets logging pipeline</li>
+        </ul>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">APIs</span>
+          <span class="tech-tag">Data Analysis</span>
+        </div>
+      </div>
+
+      <!-- HIRING ASSISTANT -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-num">03</span>
+          <span class="project-status status-live">COMPLETE</span>
+        </div>
+        <h3 class="project-title">AI Hiring Assistant Chatbot</h3>
+        <p class="project-desc">
+          LLM-powered chatbot simulating a hiring assistant with context-aware
+          conversation, technical question generation, and candidate evaluation logic.
+        </p>
+        <ul class="project-features">
+          <li>Context-aware multi-turn conversation</li>
+          <li>Technical question generation by role</li>
+          <li>Candidate interaction flow design</li>
+          <li>Evaluation + scoring logic</li>
+        </ul>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">LLM APIs</span>
+          <span class="tech-tag">Streamlit</span>
+        </div>
+      </div>
+
+      <!-- JANANI -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-num">04</span>
+          <span class="project-status status-mvp">MVP STAGE</span>
+        </div>
+        <h3 class="project-title">JANANI.AI</h3>
+        <p class="project-desc">
+          40-day behavioral transformation AI companion. Privacy-first,
+          local inference. Built for Tier-2 India students and young professionals.
+          GTM targeting colleges and the Indian diaspora in Singapore/UAE.
+        </p>
+        <ul class="project-features">
+          <li>40-day transformation framework</li>
+          <li>Local inference via Ollama (privacy-first)</li>
+          <li>Whisper for voice input</li>
+          <li>FastAPI + PostgreSQL backend</li>
+        </ul>
+        <div class="project-tech">
+          <span class="tech-tag">FastAPI</span>
+          <span class="tech-tag">Ollama</span>
+          <span class="tech-tag">Whisper</span>
+          <span class="tech-tag">PostgreSQL</span>
+        </div>
+      </div>
+
+      <!-- NETFLIX -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-num">05</span>
+          <span class="project-status status-live">COMPLETE</span>
+        </div>
+        <h3 class="project-title">Netflix Data Analysis</h3>
+        <p class="project-desc">
+          End-to-end data analysis project extracting business insights from
+          the Netflix dataset — cleaning, trend analysis, and visualization dashboards.
+        </p>
+        <ul class="project-features">
+          <li>Data cleaning and preprocessing</li>
+          <li>Trend and content analysis</li>
+          <li>Business insight dashboards</li>
+        </ul>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Pandas</span>
+          <span class="tech-tag">Visualization</span>
+        </div>
+      </div>
+
+      <!-- RETAIL -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-num">06</span>
+          <span class="project-status status-live">COMPLETE</span>
+        </div>
+        <h3 class="project-title">UCI Online Retail Analysis</h3>
+        <p class="project-desc">
+          Structured data analytics project on customer and sales data —
+          transaction analysis, customer segmentation, and revenue pattern modeling.
+        </p>
+        <ul class="project-features">
+          <li>Transaction cohort analysis</li>
+          <li>Customer segmentation (RFM)</li>
+          <li>Revenue pattern modeling</li>
+        </ul>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Pandas</span>
+          <span class="tech-tag">SQL</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LAB -->
+<section id="lab">
+  <div class="container">
+    <div class="lab-inner">
+      <div class="lab-text">
+        <div class="section-header">
+          <span class="section-tag">04 / Experimental AI Lab</span>
+          <h2 class="section-title">mw.ai<br><em>data systems</em></h2>
+        </div>
+        <p>
+          My personal AI lab and solopreneur entity. Systems are built, tested,
+          and evolved here — not for demos, but for real deployment.
+        </p>
+        <p>
+          Current experiments: multi-agent behavioral ecosystems,
+          social media automation pipelines, local LLM fine-tuning
+          with LoRA/Unsloth, and AI-driven SMB automation tools.
+        </p>
+        <p>
+          The lab is the company. The company is the proof.
+        </p>
+        <div style="margin-top: 32px;">
+          <a href="#contact" class="btn btn-primary" style="margin-right:12px;">Work Together</a>
+          <a href="https://github.com" class="btn btn-secondary" target="_blank">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="lab-terminal">
+        <div class="terminal-bar">
+          <div class="terminal-dot" style="background:#f05454;"></div>
+          <div class="terminal-dot" style="background:#f0a05a;"></div>
+          <div class="terminal-dot" style="background:#00f5c4;"></div>
+          <span style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-left:8px;">mw.ai / systems.py</span>
+        </div>
+        <div class="terminal-code">
+          <span class="t-comment"># mw.ai data systems — active stack</span><br>
+          <br>
+          <span class="t-key">entity</span> <span class="t-muted">=</span> {<br>
+          &nbsp;&nbsp;<span class="t-str">"name"</span>: <span class="t-val">"mw.ai data systems"</span>,<br>
+          &nbsp;&nbsp;<span class="t-str">"founder"</span>: <span class="t-val">"Manidhar"</span>,<br>
+          &nbsp;&nbsp;<span class="t-str">"base"</span>: <span class="t-val">"Warangal / Bengaluru"</span>,<br>
+          &nbsp;&nbsp;<span class="t-str">"focus"</span>: [<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"AI SaaS"</span>, <span class="t-val">"CRM Automation"</span>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"Behavioral AI"</span>, <span class="t-val">"SMB Tools"</span><br>
+          &nbsp;&nbsp;]<br>
+          }<br>
+          <br>
+          <span class="t-key">products</span> <span class="t-muted">=</span> {<br>
+          &nbsp;&nbsp;<span class="t-str">"JANANI.AI"</span>: <span class="t-val">"mvp_stage"</span>,<br>
+          &nbsp;&nbsp;<span class="t-str">"mw.social"</span>: <span class="t-val">"beta"</span>,<br>
+          &nbsp;&nbsp;<span class="t-str">"Sahari.AI"</span>: <span class="t-val">"building"</span><br>
+          }<br>
+          <br>
+          <span class="t-comment"># status: actively building</span><br>
+          <span class="t-key">print</span>(<span class="t-val">"execution_mode: ON"</span>)
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">05 / Roadmap</span>
+      <h2 class="section-title">Where this <em>is going</em></h2>
+    </div>
+    <div class="roadmap-list">
+      <div class="roadmap-item">
+        <div class="roadmap-phase">NOW</div>
+        <div class="roadmap-content">
+          <div class="roadmap-title">JANANI.AI MVP → First Users</div>
+          <div class="roadmap-desc">Deploying the 40-day behavioral AI companion to first cohort. Targeting students at Padmavathi Degree College, Warangal. Validating core transformation loop.</div>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-phase">Q2 2025</div>
+        <div class="roadmap-content">
+          <div class="roadmap-title">Multi-Agent AI Ecosystem</div>
+          <div class="roadmap-desc">Expanding the Personal AI Discipline System into a full multi-agent ecosystem: Self-AI, Consumption-AI, Finance-AI operating on shared PostgreSQL memory.</div>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-phase">Q3 2025</div>
+        <div class="roadmap-content">
+          <div class="roadmap-title">mw.ai SMB Product Line</div>
+          <div class="roadmap-desc">Launch AI-driven CRM, automation, and data analytics SaaS for local SMBs. First paying clients from Warangal/Hyderabad market. Geographic expansion to Singapore/UAE diaspora.</div>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-phase">2026</div>
+        <div class="roadmap-content">
+          <div class="roadmap-title">Full System Monetization + High-Value Role</div>
+          <div class="roadmap-desc">Either: secured 27–30 LPA AI/ML role at a high-growth company, or mw.ai generating consistent revenue. Both paths converge on the same goal — financial independence.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-text">
+        <div class="section-header">
+          <span class="section-tag">06 / Contact</span>
+          <h2 class="section-title">Let's <em>build</em> something</h2>
+        </div>
+        <p>
+          Open to AI/ML/Data roles, freelance AI systems work, and
+          collaboration on agentic AI projects.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:manidhar@mw.ai" class="contact-link">
+            <span class="contact-link-label">Email</span>
+            <span class="contact-link-val">manidhar@mw.ai</span>
+          </a>
+          <a href="https://linkedin.com" class="contact-link" target="_blank">
+            <span class="contact-link-label">LinkedIn</span>
+            <span class="contact-link-val">linkedin.com/in/manidhar</span>
+          </a>
+          <a href="https://github.com" class="contact-link" target="_blank">
+            <span class="contact-link-label">GitHub</span>
+            <span class="contact-link-val">github.com/manidhar</span>
+          </a>
+          <a href="https://instagram.com" class="contact-link" target="_blank">
+            <span class="contact-link-label">Instagram</span>
+            <span class="contact-link-val">@mw.ai.systems</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="cta-block">
+        <h3>Why hire me?</h3>
+        <p>
+          I don't bring tutorials. I bring shipped systems, enterprise operational experience,
+          and a rare combination of behavioral psychology + AI execution.
+        </p>
+        <div class="cta-options">
+          <div class="cta-option">6+ real projects with working code on GitHub</div>
+          <div class="cta-option">Enterprise background at Cognizant + Genpact</div>
+          <div class="cta-option">Builds fast with Python + FastAPI + LLMs + local AI</div>
+          <div class="cta-option">Psychology-driven design — systems that actually change behavior</div>
+          <div class="cta-option">Running own AI entity (mw.ai) — founder mindset</div>
+          <div class="cta-option">Execution-first: build → test → ship → iterate</div>
+        </div>
+        <div style="margin-top:32px;">
+          <a href="mailto:manidhar@mw.ai" class="btn btn-primary">Hire Manidhar</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-text">© 2025 <span>Manidhar</span> / mw.ai data systems — All systems running.</div>
+  <div class="footer-text">Built with <span>execution-first</span> mindset.</div>
+</footer>
+
+<script>
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Intersection observer for nav active state
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.style.color = '');
+      const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+      if (active) active.style.color = 'var(--accent)';
+    }
+  });
+}, { threshold: 0.4 });
+
+sections.forEach(s => obs.observe(s));
+
+// Scroll-triggered fade-in for cards
+const cards = document.querySelectorAll('.project-card, .skill-card, .identity-item, .roadmap-item');
+cards.forEach(card => {
+  card.style.opacity = '0';
+  card.style.transform = 'translateY(20px)';
+  card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+});
+
+const cardObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      cardObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+cards.forEach(card => cardObs.observe(card));
+</script>
+
+</body>
+</html>
