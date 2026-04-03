@@ -1,66 +1,32 @@
+import { PORTFOLIO } from '../../content/portfolio'
+import Heading from './ui/Heading'
+import Section from './ui/Section'
+
 export default function Roadmap() {
   return (
-    <section id="roadmap">
-      <div className="container">
-        <div className="section-header">
-          <span className="section-tag">07 / ROADMAP</span>
-          <h2 className="section-title">
-            Where this <em>is going</em>
-          </h2>
-        </div>
+    <Section id="roadmap">
+      <Heading
+        eyebrow="Roadmap"
+        title="Long-term thinking with systems underneath it."
+        description="The next step is not more surface area. It is stronger infrastructure, tighter evaluation, and systems that compound context over time."
+      />
 
-        <div className="roadmap-list">
-
-          {/* NOW */}
-          <div className="roadmap-item">
-            <span className="roadmap-time">NOW</span>
-            <h3>Shipping & Validation</h3>
-            <p>
-              Getting JANANI AI into hands of real users.
-              <br />
-              Tracking behavior, validating feedback loops, and iterating based on actual usage.
+      <div className="mt-12 grid gap-5 lg:grid-cols-3">
+        {PORTFOLIO.roadmap.map((item) => (
+          <article
+            key={item.title}
+            className="rounded-[28px] bg-stone-100/88 px-6 py-6 ring-1 ring-slate-200/70 dark:bg-white/[0.04] dark:ring-white/10"
+          >
+            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-teal-800 dark:text-teal-300">
+              Forward signal
             </p>
-          </div>
-
-          {/* NEXT */}
-          <div className="roadmap-item">
-            <span className="roadmap-time">NEXT</span>
-            <h3>System Expansion</h3>
-            <p>
-              Expanding into a multi-agent system:
-              <br />
-              Self AI, Consumption AI, and Finance AI working on shared memory.
-              <br />
-              Improving automation pipelines and system reliability.
-            </p>
-          </div>
-
-          {/* LATER */}
-          <div className="roadmap-item">
-            <span className="roadmap-time">LATER</span>
-            <h3>Productization</h3>
-            <p>
-              Launching SMB-focused AI tools under mw.ai.
-              <br />
-              Acquiring first paying users and refining based on real business needs.
-            </p>
-          </div>
-
-          {/* END */}
-          <div className="roadmap-item">
-            <span className="roadmap-time">END GOAL</span>
-            <h3>Operate at Scale</h3>
-            <p>
-              Build systems that scale independently
-              <br />
-              OR
-              <br />
-              Work directly with founders to build and operate high-impact systems.
-            </p>
-          </div>
-
-        </div>
+            <h3 className="mt-4 font-display text-2xl leading-tight tracking-[-0.03em] text-slate-900 dark:text-stone-100">
+              {item.title}
+            </h3>
+            <p className="mt-4 text-[15px] leading-7 text-slate-600 dark:text-stone-300">{item.detail}</p>
+          </article>
+        ))}
       </div>
-    </section>
+    </Section>
   )
 }

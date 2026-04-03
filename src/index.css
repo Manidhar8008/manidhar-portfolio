@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #faf8f4;
+    background-image:
+      radial-gradient(circle at top left, rgba(13, 92, 92, 0.1), transparent 24%),
+      radial-gradient(circle at bottom right, rgba(20, 83, 45, 0.06), transparent 30%),
+      linear-gradient(180deg, #faf8f4 0%, #f2ece1 100%);
+    color: #0f172a;
+    font-family: Aptos, "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .dark body {
+    background-color: #020617;
+    background-image:
+      radial-gradient(circle at top left, rgba(45, 212, 191, 0.1), transparent 18%),
+      radial-gradient(circle at bottom right, rgba(13, 148, 136, 0.08), transparent 24%),
+      linear-gradient(180deg, #0f172a 0%, #020617 100%);
+    color: #f5f5f4;
+  }
+
+  body,
+  a,
+  button {
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  ::selection {
+    background: rgba(15, 118, 110, 0.18);
+  }
+}

@@ -1,9 +1,12 @@
 module.exports = {
+  darkMode: 'class',
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      colors: {
-        neon: '#00f5c4',
+      fontFamily: {
+        sans: ['Aptos', 'Avenir Next', 'Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        display: ['Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', 'Georgia', 'serif'],
+        mono: ['IBM Plex Mono', 'Consolas', 'Monaco', 'monospace'],
       },
     },
   },
