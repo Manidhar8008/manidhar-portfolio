@@ -8,11 +8,11 @@ export default function Projects() {
     <Section id="work">
       <Heading
         eyebrow="Proof of Execution"
-        title="Systems built around business outcomes."
-        description="Each case study is framed in real-world terms: what was broken, what system got built, and what changed."
+        title="Systems built around outcomes."
+        description="Tap to open what matters: problem → system → impact."
       />
 
-      <div className="mt-12 space-y-8">
+      <div className="mt-12 space-y-8" data-zone="projects" data-intent="github">
         {PORTFOLIO.caseStudies.map((study, index) => (
           <CaseStudy key={study.id} study={study} index={index} />
         ))}

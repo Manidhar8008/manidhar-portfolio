@@ -43,6 +43,7 @@ export type PortfolioData = {
   headline: string
   subheadline: string
   proofLine: string
+  proofStats: string[]
   snapshot: string[]
   caseStudies: CaseStudy[]
   playbook: PlaybookItem[]
@@ -56,9 +57,10 @@ export type PortfolioData = {
 
 export const PORTFOLIO: PortfolioData = {
   name: 'Manidhar Pati',
-  headline: 'I build AI systems that turn behavior into measurable outcomes.',
+  headline: 'I turn behavior into measurable systems.',
   subheadline: 'From tracking -> decision -> intervention loops.',
-  proofLine: 'Built 6 systems | 8,400+ signals/month | 65% time saved in automated workflows',
+  proofLine: '6 systems built · 8,400+ signals/month · 65% time saved',
+  proofStats: ['6 production systems', '8,400+ signals/month', '65% time saved'],
   snapshot: [
     'Enterprise ops at Cognizant & Genpact: led $5.5M O2C collections, recovered $2M, built automation + MIS dashboards with measurable P&L impact.',
     'Production AI: behavioral tracking + LLM coaching (Janani AI), ML trading with backtesting & live execution (1.84 Sharpe ratio).',
@@ -71,11 +73,11 @@ export const PORTFOLIO: PortfolioData = {
       id: 'janani-ai',
       title: 'Janani AI',
       summary:
-        'AI-powered behavior tracking + media management system that transforms daily actions into measurable signals, then uses local LLM coaching and automation to reinforce discipline.',
+        'Behavior tracking + coaching system that turns daily actions into signals, then intervenes with local LLM coaching and automation.',
       problem:
-        'Personal discipline systems fail because they lack real-time feedback loops. Traditional habit trackers record what happened but do not intervene. Without immediate reinforcement tied to actual behavior, people do not course-correct. Media workflows also require manual orchestration across multiple platforms, burning 8+ hours per week.',
+        'Habit tools log history but never intervene. Media workflows were manual and slow, burning hours each week.',
       systemBuilt:
-        'Janani AI combines real-time behavior logging, constrained LLM coaching based on actual behavior patterns, and automation orchestration for content generation, scheduling, publishing, and analytics in a single feedback loop.',
+        'Real-time behavior logging + constrained LLM coaching + automation for content creation/scheduling inside one feedback loop.',
       impact: [
         {
           label: 'Intervention Delivery',
@@ -94,18 +96,18 @@ export const PORTFOLIO: PortfolioData = {
         },
       ],
       closing:
-        'Janani AI proves that AI systems become high-leverage when they log, analyze, and intervene in real time instead of just reporting after the fact.',
+        'Proves that logging + analysis + real-time intervention beats post-hoc tracking.',
       githubUrl: 'https://github.com/Manidhar8008',
     },
     {
       id: 'algo-trading-ml',
       title: 'Algo Trading ML System',
       summary:
-        'ML-driven trading strategy system with backtesting, execution automation, and real-time analytics for decision automation.',
+        'ML trading strategy with backtesting, automated execution, and real-time analytics.',
       problem:
-        'Most retail traders operate on intuition or delayed signals, which leads to inconsistent execution, large drawdowns, and no reliable decision logging. Without systematic validation and rapid retraining, alpha disappears fast.',
+        'Retail trading was intuition-driven, inconsistent, and unlogged—no fast validation or retraining.',
       systemBuilt:
-        'Built an end-to-end trading decision system with feature engineering from long-range market data, backtesting across rolling windows, ensemble models with confidence scoring, automated execution logging, and a monitoring layer that triggers retraining when performance degrades.',
+        'End-to-end decision system: feature generation, rolling backtests, ensemble with confidence, automated execution + monitoring for retrains.',
       impact: [
         {
           label: 'Production Sharpe Ratio',
@@ -124,7 +126,7 @@ export const PORTFOLIO: PortfolioData = {
         },
       ],
       closing:
-        'This system shows that structured logging, continuous evaluation, and decision automation outperform reactive human judgment in high-stakes environments.',
+        'Shows that structured logging + continuous evaluation + automation outperform reactive trading.',
       githubUrl: 'https://github.com/Manidhar8008',
     },
   ],
@@ -153,20 +155,17 @@ export const PORTFOLIO: PortfolioData = {
   systems: [
     {
       title: 'Behavior Tracking System',
-      detail:
-        'Behavioral tracking infrastructure that converts actions into measurable signals, supports category-level logging, and creates the raw material for intervention loops.',
+      detail: 'Converts actions into signals and audit logs so interventions have ground truth.',
       signal: '8,400+ signals/month',
     },
     {
       title: 'AI Intervention Engine',
-      detail:
-        'A constrained coaching layer that turns logged behavior into real-time interventions, increasing relevance and reducing generic advice.',
+      detail: 'Constrained coaching layer that turns logged behavior into real-time, relevant prompts.',
       signal: '3.2 seconds to intervention',
     },
     {
       title: 'Automation Pipelines',
-      detail:
-        'Automation systems for content, operations, and SMB tooling that reduce manual orchestration and create repeatable execution leverage.',
+      detail: 'Pipelines for content and ops that remove manual orchestration and keep cadence.',
       signal: '65% workflow time saved',
     },
   ],
@@ -188,7 +187,7 @@ export const PORTFOLIO: PortfolioData = {
     },
   ],
   contact: {
-    message: 'Let’s build systems that drive outcomes.',
+    message: "Let's build systems that drive outcomes.",
     links: [
       {
         label: 'Email',

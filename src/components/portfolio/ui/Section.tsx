@@ -7,6 +7,7 @@ type SectionProps = {
   className?: string
   containerClassName?: string
   divided?: boolean
+  tone?: 'base' | 'alt'
 }
 
 export default function Section({
@@ -14,13 +15,19 @@ export default function Section({
   children,
   className = '',
   containerClassName = '',
-  divided = true,
+  divided: _divided = false,
+  tone = 'base',
 }: SectionProps) {
-  const borderClass = divided ? 'border-t border-slate-200/70 dark:border-white/10' : ''
+  const backgroundClass =
+    tone === 'alt'
+      ? 'bg-stone-100 dark:bg-[#0d1320]'
+      : 'bg-stone-50 dark:bg-[#0a0f1a]'
 
   return (
-    <section id={id} className={`${borderClass} ${className}`.trim()}>
-      <Container className={`py-16 sm:py-20 lg:py-24 ${containerClassName}`.trim()}>{children}</Container>
+    <section id={id} className={`${backgroundClass} ${className}`.trim()}>
+      <Container className={`py-[100px] sm:py-[100px] lg:py-[100px] ${containerClassName}`.trim()}>
+        {children}
+      </Container>
     </section>
   )
 }

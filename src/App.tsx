@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react'
+import AiLabSection from './components/portfolio/AiLabSection'
+import CaseStudiesSection from './components/portfolio/CaseStudiesSection'
 import Contact from './components/portfolio/Contact'
+import ExecutionUnits from './components/portfolio/ExecutionUnits'
+import ExperienceSection from './components/portfolio/ExperienceSection'
+import FlagshipSystem from './components/portfolio/FlagshipSystem'
 import Hero from './components/portfolio/Hero'
-import Operate from './components/portfolio/Operate'
+import HowIThinkSection from './components/portfolio/HowIThinkSection'
 import PortfolioFooter from './components/portfolio/PortfolioFooter'
 import PortfolioNav from './components/portfolio/PortfolioNav'
-import Projects from './components/portfolio/Projects'
-import Roadmap from './components/portfolio/Roadmap'
-import Systems from './components/portfolio/Systems'
+import StartupSystem from './components/portfolio/StartupSystem'
+import WritingSection from './components/portfolio/WritingSection'
 
 type ThemeMode = 'light' | 'dark'
 
@@ -37,12 +41,16 @@ export default function App() {
         onToggleTheme={() => setTheme((currentTheme) => (currentTheme === 'light' ? 'dark' : 'light'))}
       />
 
-      <main>
+      <main className="relative z-10">
         <Hero />
-        <Projects />
-        <Operate />
-        <Systems />
-        <Roadmap />
+        <FlagshipSystem />
+        <StartupSystem />
+        <ExecutionUnits />
+        <CaseStudiesSection />
+        <ExperienceSection />
+        <HowIThinkSection />
+        <AiLabSection />
+        <WritingSection />
         <Contact />
       </main>
 
