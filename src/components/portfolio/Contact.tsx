@@ -1,83 +1,34 @@
+import { FOUNDER_NARRATIVE } from '../../content/founderNarrative'
+import Heading from './ui/Heading'
+import Section from './ui/Section'
+
 export default function Contact() {
   return (
-    <section id="contact">
-      <div className="container">
-        <div className="contact-inner">
-          <div className="contact-text">
-            <div className="section-header">
-              <span className="section-tag">06 / Contact</span>
-              <h2 className="section-title">
-                Let's <em>build</em> something
-              </h2>
-            </div>
-            <p>
-              Open to AI/ML/Data roles, freelance AI systems work, and
-              collaboration on agentic AI projects.
-            </p>
+    <Section id="contact" className="pb-10" divided tone="base">
+      <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+        <Heading
+          eyebrow="Contact"
+          title="Let’s build systems that drive outcomes."
+          description="If you’re working on systems where decisions matter, let’s talk."
+        />
 
-            <div className="contact-links">
-              <a href="mailto:manidhar@mw.ai" className="contact-link">
-                <span className="contact-link-label">Email</span>
-                <span className="contact-link-val">manidhar@mw.ai</span>
-              </a>
-              <a
-                href="https://linkedin.com"
-                className="contact-link"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className="contact-link-label">LinkedIn</span>
-                <span className="contact-link-val">
-                  linkedin.com/in/manidhar
-                </span>
-              </a>
-              <a
-                href="https://github.com"
-                className="contact-link"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className="contact-link-label">GitHub</span>
-                <span className="contact-link-val">github.com/manidhar</span>
-              </a>
-              <a
-                href="https://instagram.com"
-                className="contact-link"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className="contact-link-label">Instagram</span>
-                <span className="contact-link-val">@mw.ai.systems</span>
-              </a>
-            </div>
-          </div>
-
-          <div className="cta-block">
-            <h3>Why hire me?</h3>
-            <p>
-              I don't bring tutorials. I bring shipped systems, enterprise
-              operational experience, and a rare combination of behavioral
-              psychology + AI execution.
-            </p>
-            <div className="cta-options">
-              <div className="cta-option">6+ real projects with working code on GitHub</div>
-              <div className="cta-option">Enterprise background at Cognizant + Genpact</div>
-              <div className="cta-option">
-                Builds fast with Python + FastAPI + LLMs + local AI
-              </div>
-              <div className="cta-option">Psychology-driven design — systems that actually change behavior</div>
-              <div className="cta-option">Running own AI entity (mw.ai) — founder mindset</div>
-              <div className="cta-option">Execution-first: build → test → ship → iterate</div>
-            </div>
-            <div style={{ marginTop: 32 }}>
-              <a href="mailto:manidhar@mw.ai" className="btn btn-primary">
-                Hire Manidhar
-              </a>
-            </div>
-          </div>
+        <div className="space-y-5">
+          {FOUNDER_NARRATIVE.contact.links.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.label === 'Email' ? undefined : '_blank'}
+              rel={link.label === 'Email' ? undefined : 'noreferrer'}
+              className="flex items-center justify-between gap-4 rounded-[26px] bg-white/82 px-5 py-5 text-sm font-semibold text-slate-700 shadow-[0_12px_28px_rgba(15,23,42,0.04)] transition-colors hover:bg-white dark:bg-slate-900/56 dark:text-stone-200 dark:hover:bg-slate-900/66"
+            >
+              <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-teal-800 dark:text-teal-300">
+                {link.label}
+              </span>
+              <span>{link.value}</span>
+            </a>
+          ))}
         </div>
       </div>
-    </section>
+    </Section>
   )
 }
-

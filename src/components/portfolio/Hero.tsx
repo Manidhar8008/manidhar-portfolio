@@ -1,71 +1,54 @@
+import { FOUNDER_NARRATIVE } from '../../content/founderNarrative'
+import Container from './ui/Container'
+
 export default function Hero() {
   return (
-    <section id="hero">
-      <div className="container">
-        <div className="hero-inner" style={{ position: 'relative' }}>
-          <div
-            className="glow-orb"
-            style={{
-              width: 500,
-              height: 500,
-              background: 'rgba(0,245,196,0.04)',
-              top: -200,
-              left: -100,
-            }}
-          />
-          <div
-            className="glow-orb"
-            style={{
-              width: 400,
-              height: 400,
-              background: 'rgba(124,92,252,0.04)',
-              top: 100,
-              right: -50,
-            }}
-          />
-
-          <div className="hero-tag">
-            Available for AI / Data roles · Remote or Hyderabad
-          </div>
-          <h1 className="hero-name">
-            MANI<span>DHAR</span>
-            <span className="cursor"></span>
-          </h1>
-          <p className="hero-subtitle">
-            <strong>AI Systems Builder.</strong> I combine behavioral
-            psychology, data analytics, and agentic AI to build tools that
-            solve real problems — not demos, not tutorials. Execution-first
-            mindset from a non-traditional path.
+    <section id="hero" className="relative overflow-hidden bg-stone-50 dark:bg-[#0a0f1a]">
+      <Container className="pb-[130px] pt-[140px] sm:pb-[140px] sm:pt-[160px] lg:pb-[150px] lg:pt-[170px]">
+        <div className="max-w-[700px]">
+          <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-teal-800 dark:text-teal-300">
+            {FOUNDER_NARRATIVE.hero.eyebrow}
           </p>
-          <div className="hero-cta">
-            <a href="#projects" className="btn btn-primary">
-              See My Work
+
+          <div className="mb-10 mt-[120px] space-y-5">
+            <h1 className="max-w-[700px] font-display text-[3.5rem] font-semibold leading-[0.92] tracking-[-0.05em] text-slate-900 sm:text-[4rem] lg:text-[4.5rem] dark:text-stone-100">
+              {FOUNDER_NARRATIVE.hero.headline}
+            </h1>
+            <p className="max-w-2xl text-lg leading-8 tracking-[-0.01em] text-slate-700 sm:text-xl dark:text-stone-200">
+              {FOUNDER_NARRATIVE.hero.subheadline}
+            </p>
+            <p className="mt-4 text-xs font-medium uppercase tracking-[0.14em] text-slate-500 dark:text-stone-400">
+              {FOUNDER_NARRATIVE.hero.proofLine}
+            </p>
+          </div>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a
+              href="#flagship"
+              className="inline-flex items-center justify-center rounded-full bg-teal-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-950 dark:bg-teal-500 dark:text-slate-950 dark:hover:bg-teal-400"
+            >
+              View flagship system
             </a>
-            <a href="#contact" className="btn btn-secondary">
-              Let's Talk
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center rounded-full bg-white/80 px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-white dark:bg-white/[0.06] dark:text-stone-200 dark:hover:bg-white/[0.12]"
+            >
+              Contact
             </a>
           </div>
-          <div className="hero-stats">
-            <div>
-              <div className="stat-num">6+</div>
-              <div className="stat-label">Projects Shipped</div>
-            </div>
-            <div>
-              <div className="stat-num">3yr</div>
-              <div className="stat-label">Building AI Systems</div>
-            </div>
-            <div>
-              <div className="stat-num">2x</div>
-              <div className="stat-label">Enterprise Experience</div>
-            </div>
-            <div>
-              <div className="stat-num">∞</div>
-              <div className="stat-label">Systems in Progress</div>
-            </div>
+
+          <div className="grid gap-3 pt-8 sm:grid-cols-3">
+            {FOUNDER_NARRATIVE.hero.replacementSignals.map((signal) => (
+              <div
+                key={signal}
+                className="rounded-[24px] bg-white/72 px-4 py-4 shadow-[0_10px_24px_rgba(15,23,42,0.04)] dark:bg-slate-900/50"
+              >
+                <p className="text-sm leading-6 text-slate-600 dark:text-stone-300">{signal}</p>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   )
 }
-
