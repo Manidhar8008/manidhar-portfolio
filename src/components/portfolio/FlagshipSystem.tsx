@@ -7,61 +7,121 @@ export default function FlagshipSystem() {
 
   return (
     <Section id="flagship" tone="base">
-      <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+      <div className="space-y-12">
         <Heading
           eyebrow={flagship.eyebrow}
           title={flagship.title}
           description={flagship.operatorSignal}
         />
 
-        <div className="grid gap-10 rounded-[32px] bg-white/78 px-6 py-7 shadow-[0_18px_50px_rgba(15,23,42,0.05)] sm:px-8 sm:py-8 lg:grid-cols-[1.1fr_0.9fr] dark:bg-slate-900/62">
-          <div>
-            <div className="mb-8">
-              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-teal-800 dark:text-teal-300">
+        {/* Problem + System Overview */}
+        <div className="grid gap-8 lg:grid-cols-2">
+          <div className="rounded-lg border border-gray-200 bg-white p-8 dark:border-gray-800 dark:bg-gray-900/50">
+            <div className="space-y-4">
+              <p className="font-mono text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                 Problem
               </p>
-              <p className="mt-4 text-[15px] leading-7 text-slate-600 dark:text-stone-300">{flagship.problem}</p>
-            </div>
-
-            <div className="mb-8">
-              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-teal-800 dark:text-teal-300">
-                System
+              <p className="text-base leading-relaxed text-gray-700 dark:text-gray-300">
+                {flagship.problem}
               </p>
-              <p className="mt-4 text-[15px] leading-7 text-slate-600 dark:text-stone-300">{flagship.systemBuilt}</p>
-            </div>
-
-            <div className="mb-8">
-              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-teal-800 dark:text-teal-300">
-                What it replaces
-              </p>
-              <ul className="mt-4 space-y-3 text-[15px] leading-7 text-slate-600 dark:text-stone-300">
-                {flagship.replaces.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-teal-800 dark:text-teal-300">
-                Outcome
-              </p>
-              <p className="mt-4 text-[15px] leading-7 text-slate-700 dark:text-stone-200">{flagship.closing}</p>
             </div>
           </div>
 
-          <div className="grid gap-8">
-            {flagship.impact.map((metric) => (
-              <div key={metric.label} className="mb-8 last:mb-0">
-                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-stone-400">
-                  {metric.label}
-                </p>
-                <p className="mt-3 font-display text-[2.2rem] leading-none tracking-[-0.05em] text-slate-900 dark:text-stone-100">
-                  {metric.value}
-                </p>
-                <p className="mt-3 text-sm leading-6 text-slate-500 dark:text-stone-400">{metric.detail}</p>
+          <div className="rounded-lg border border-gray-200 bg-white p-8 dark:border-gray-800 dark:bg-gray-900/50">
+            <div className="space-y-4">
+              <p className="font-mono text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                System Built
+              </p>
+              <p className="text-base leading-relaxed text-gray-700 dark:text-gray-300">
+                {flagship.systemBuilt}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Architecture Diagram */}
+        <div className="rounded-lg border border-gray-200 bg-white p-8 dark:border-gray-800 dark:bg-gray-900/50">
+          <p className="font-mono text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-6">
+            Architecture
+          </p>
+          <div className="space-y-4 text-sm">
+            <div className="flex items-center justify-between px-4 py-3 rounded bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+              <span className="text-gray-700 dark:text-gray-300">Data Ingestion Layer</span>
+              <span className="text-xs px-2 py-1 rounded bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">Streaming</span>
+            </div>
+            <div className="flex justify-center">
+              <span className="text-gray-400">↓</span>
+            </div>
+            <div className="flex items-center justify-between px-4 py-3 rounded bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+              <span className="text-gray-700 dark:text-gray-300">Knowledge Graph</span>
+              <span className="text-xs px-2 py-1 rounded bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400">Graph DB</span>
+            </div>
+            <div className="flex justify-center">
+              <span className="text-gray-400">↓</span>
+            </div>
+            <div className="flex items-center justify-between px-4 py-3 rounded bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+              <span className="text-gray-700 dark:text-gray-300">Semantic Router + Multi-hop Reasoning</span>
+              <span className="text-xs px-2 py-1 rounded bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">LLM</span>
+            </div>
+            <div className="flex justify-center">
+              <span className="text-gray-400">↓</span>
+            </div>
+            <div className="flex items-center justify-between px-4 py-3 rounded bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+              <span className="text-gray-700 dark:text-gray-300">Domain Agent Execution</span>
+              <span className="text-xs px-2 py-1 rounded bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">Agentic</span>
+            </div>
+            <div className="flex justify-center">
+              <span className="text-gray-400">↓</span>
+            </div>
+            <div className="flex items-center justify-between px-4 py-3 rounded bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+              <span className="text-gray-700 dark:text-gray-300">Feedback Loop & KB Optimization</span>
+              <span className="text-xs px-2 py-1 rounded bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400">Continuous</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Impact Metrics */}
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {flagship.impact.map((metric) => (
+            <div
+              key={metric.label}
+              className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900/50"
+            >
+              <p className="font-mono text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                {metric.label}
+              </p>
+              <p className="mt-3 text-3xl font-bold text-gray-900 dark:text-white">
+                {metric.value}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                {metric.detail}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* What it replaces */}
+        <div className="rounded-lg border border-gray-200 bg-white p-8 dark:border-gray-800 dark:bg-gray-900/50">
+          <p className="font-mono text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-6">
+            What it replaces
+          </p>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {flagship.replaces.map((item) => (
+              <div key={item} className="flex items-center gap-3 px-4 py-3 rounded bg-gray-50 dark:bg-gray-800/50">
+                <span className="text-gray-900 dark:text-white font-medium">{item}</span>
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Outcome */}
+        <div className="rounded-lg border border-gray-200 bg-white p-8 dark:border-gray-800 dark:bg-gray-900/50">
+          <p className="font-mono text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
+            Outcome
+          </p>
+          <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+            {flagship.closing}
+          </p>
         </div>
       </div>
     </Section>

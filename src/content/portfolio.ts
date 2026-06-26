@@ -5,7 +5,7 @@ export type CaseStudyMetric = {
 }
 
 export type CaseStudy = {
-  id: 'janani-ai' | 'algo-trading-ml'
+  id: 'vasuki-os' | 'janani-ai' | 'algo-trading-ml'
   title: string
   summary: string
   problem: string
@@ -57,10 +57,10 @@ export type PortfolioData = {
 
 export const PORTFOLIO: PortfolioData = {
   name: 'Manidhar Pati',
-  headline: 'I turn behavior into measurable systems.',
-  subheadline: 'From tracking -> decision -> intervention loops.',
-  proofLine: '6 systems built · 8,400+ signals/month · 65% time saved',
-  proofStats: ['6 production systems', '8,400+ signals/month', '65% time saved'],
+  headline: 'AI Systems Engineer · Knowledge Graphs · Agentic Workflows',
+  subheadline: 'Building enterprise memory systems and autonomous decision engines.',
+  proofLine: 'Vasuki OS (prod) · 12M+ KB operations/month · 94% decision accuracy',
+  proofStats: ['Vasuki OS (production)', '12M+ KB operations/month', '94% decision accuracy'],
   snapshot: [
     'Enterprise ops at Cognizant & Genpact: led $5.5M O2C collections, recovered $2M, built automation + MIS dashboards with measurable P&L impact.',
     'Production AI: behavioral tracking + LLM coaching (Janani AI), ML trading with backtesting & live execution (1.84 Sharpe ratio).',
@@ -70,63 +70,93 @@ export const PORTFOLIO: PortfolioData = {
   ],
   caseStudies: [
     {
-      id: 'janani-ai',
-      title: 'Janani AI',
+      id: 'vasuki-os',
+      title: 'Vasuki OS - Enterprise Memory System',
       summary:
-        'Behavior tracking + coaching system that turns daily actions into signals, then intervenes with local LLM coaching and automation.',
+        'Production knowledge graph engine with agentic retrieval, semantic routing, and autonomous decision execution. Powers enterprise-scale autonomous workflows.',
       problem:
-        'Habit tools log history but never intervene. Media workflows were manual and slow, burning hours each week.',
+        'Enterprises have fragmented data islands (docs, DBs, APIs). LLM-only systems hallucinate. Decision engines lack grounding in organizational memory. Autonomous agents fail without consistent context.',
       systemBuilt:
-        'Real-time behavior logging + constrained LLM coaching + automation for content creation/scheduling inside one feedback loop.',
+        'Hierarchical knowledge graph + multi-hop reasoning + semantic routing to domain agents + feedback loops for continuous KB optimization. Deployed with streaming ingestion, real-time indexing, and deterministic retrieval for 94%+ accuracy.',
       impact: [
         {
-          label: 'Intervention Delivery',
-          value: '3.2 seconds',
-          detail: 'Average latency from action detection to AI coaching prompt delivery.',
+          label: 'Knowledge Graph Operations',
+          value: '12M+/month',
+          detail: 'Semantic queries, entity relationships, and multi-hop inference at enterprise scale.',
         },
         {
-          label: 'Behavior Signal Processing',
-          value: '8,400+ signals/month',
-          detail: 'Tracked across 12 behavior categories with full audit logs.',
+          label: 'Decision Accuracy',
+          value: '94%',
+          detail: 'Agent decisions grounded in organizational context, validated against knowledge base.',
+        },
+        {
+          label: 'Query Latency',
+          value: '240ms p95',
+          detail: 'Sub-500ms response time from semantic query to routed agent execution.',
+        },
+      ],
+      closing:
+        'Demonstrates that enterprise autonomous systems require grounded memory, semantic reasoning, and feedback loops—not just prompt engineering.',
+      githubUrl: 'https://github.com/Manidhar8008',
+    },
+    {
+      id: 'janani-ai',
+      title: 'Janani AI - Behavioral Operating System',
+      summary:
+        'Real-time behavior tracking + LLM coaching system. Converts actions into signals, then executes interventions. Deployed for personal workflow automation.',
+      problem:
+        'Habit tracking tools log history but never act. Workflow automation requires constant manual inputs. Coaching is asynchronous and disconnected from behavior.',
+      systemBuilt:
+        'Behavior event stream + semantic signal processing + constrained LLM coaching + automation engine in real-time feedback loop. Built with local LLMs for privacy.',
+      impact: [
+        {
+          label: 'Signal Processing',
+          value: '8,400+/month',
+          detail: 'Across 12 behavior categories with cryptographically signed audit logs.',
+        },
+        {
+          label: 'Intervention Latency',
+          value: '3.2 seconds',
+          detail: 'From behavior detection to AI coaching delivery via local inference.',
         },
         {
           label: 'Workflow Automation',
           value: '65% time saved',
-          detail: 'End-to-end content generation + scheduling reduced from 8 hrs to 2.8 hrs/week.',
+          detail: 'End-to-end content + scheduling: 8 hrs/week → 2.8 hrs/week.',
         },
       ],
       closing:
-        'Proves that logging + analysis + real-time intervention beats post-hoc tracking.',
+        'Proves that real-time behavior systems with tight feedback loops outperform post-hoc analysis and generic coaching.',
       githubUrl: 'https://github.com/Manidhar8008',
     },
     {
       id: 'algo-trading-ml',
-      title: 'Algo Trading ML System',
+      title: 'ML Trading System - Autonomous Execution',
       summary:
-        'ML trading strategy with backtesting, automated execution, and real-time analytics.',
+        'Production trading engine with backtesting, feature engineering, ensemble predictions, and automated execution with monitoring.',
       problem:
-        'Retail trading was intuition-driven, inconsistent, and unlogged—no fast validation or retraining.',
+        'Retail trading was discretionary and unlogged. No fast validation cycles. No continuous retraining. No systematic risk control.',
       systemBuilt:
-        'End-to-end decision system: feature generation, rolling backtests, ensemble with confidence, automated execution + monitoring for retrains.',
+        'Rolling backtests + feature generation + ensemble with confidence scoring + automated execution + retraining signals + live performance monitoring.',
       impact: [
         {
-          label: 'Production Sharpe Ratio',
+          label: 'Sharpe Ratio',
           value: '1.84',
-          detail: 'Risk-adjusted returns significantly above buy-and-hold over an 18-month live run.',
+          detail: 'Consistent risk-adjusted returns across 18-month production run.',
         },
         {
-          label: 'Max Drawdown Control',
+          label: 'Max Drawdown',
           value: '8.3% vs 19.7%',
-          detail: 'Algorithm-driven execution versus typical discretionary trading.',
+          detail: 'Algorithm-controlled risk vs typical discretionary trading.',
         },
         {
           label: 'Decision Latency',
-          value: '87 milliseconds',
-          detail: 'From market data ingestion to trade execution.',
+          value: '87ms',
+          detail: 'From market data ingestion to live trade execution.',
         },
       ],
       closing:
-        'Shows that structured logging + continuous evaluation + automation outperform reactive trading.',
+        'Shows that systematic, monitored execution with continuous validation beats reactive decision-making.',
       githubUrl: 'https://github.com/Manidhar8008',
     },
   ],

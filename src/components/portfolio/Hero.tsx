@@ -3,47 +3,58 @@ import Container from './ui/Container'
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative overflow-hidden bg-stone-50 dark:bg-[#0a0f1a]">
-      <Container className="pb-[130px] pt-[140px] sm:pb-[140px] sm:pt-[160px] lg:pb-[150px] lg:pt-[170px]">
-        <div className="max-w-[700px]">
-          <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-teal-800 dark:text-teal-300">
+    <section id="hero" className="relative overflow-hidden bg-white dark:bg-black">
+      {/* Grid background */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)]" />
+      
+      <Container className="relative z-10 py-24 sm:py-32 lg:py-40">
+        <div className="max-w-4xl">
+          {/* Tag */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50/50 px-3 py-1 text-xs font-medium text-gray-600 dark:border-gray-800 dark:bg-gray-900/50 dark:text-gray-400">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+            </span>
             {FOUNDER_NARRATIVE.hero.eyebrow}
-          </p>
+          </div>
 
-          <div className="mb-10 mt-[120px] space-y-5">
-            <h1 className="max-w-[700px] font-display text-[3.5rem] font-semibold leading-[0.92] tracking-[-0.05em] text-slate-900 sm:text-[4rem] lg:text-[4.5rem] dark:text-stone-100">
+          {/* Headline + Subheadline */}
+          <div className="mt-12 space-y-6">
+            <h1 className="text-5xl font-bold tracking-tight text-black dark:text-white sm:text-6xl lg:text-7xl">
               {FOUNDER_NARRATIVE.hero.headline}
             </h1>
-            <p className="max-w-2xl text-lg leading-8 tracking-[-0.01em] text-slate-700 sm:text-xl dark:text-stone-200">
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed">
               {FOUNDER_NARRATIVE.hero.subheadline}
             </p>
-            <p className="mt-4 text-xs font-medium uppercase tracking-[0.14em] text-slate-500 dark:text-stone-400">
+            <p className="text-sm font-mono text-gray-500 dark:text-gray-500 uppercase tracking-wider pt-2">
               {FOUNDER_NARRATIVE.hero.proofLine}
             </p>
           </div>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          {/* CTA Buttons */}
+          <div className="mt-12 flex flex-col gap-4 sm:flex-row">
             <a
               href="#flagship"
-              className="inline-flex items-center justify-center rounded-full bg-teal-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-950 dark:bg-teal-500 dark:text-slate-950 dark:hover:bg-teal-400"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-black text-white font-medium transition-all hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-100"
             >
-              View flagship system
+              View Vasuki OS
             </a>
             <a
-              href="#contact"
-              className="inline-flex items-center justify-center rounded-full bg-white/80 px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-white dark:bg-white/[0.06] dark:text-stone-200 dark:hover:bg-white/[0.12]"
+              href="#case-studies"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-gray-200 bg-white text-black font-medium transition-all hover:bg-gray-50 dark:border-gray-800 dark:bg-transparent dark:text-white dark:hover:bg-gray-900/50"
             >
-              Contact
+              See case studies
             </a>
           </div>
 
-          <div className="grid gap-3 pt-8 sm:grid-cols-3">
+          {/* Replacement signals */}
+          <div className="mt-16 grid gap-4 sm:grid-cols-3">
             {FOUNDER_NARRATIVE.hero.replacementSignals.map((signal) => (
               <div
                 key={signal}
-                className="rounded-[24px] bg-white/72 px-4 py-4 shadow-[0_10px_24px_rgba(15,23,42,0.04)] dark:bg-slate-900/50"
+                className="rounded-lg border border-gray-200 bg-gray-50/50 p-4 dark:border-gray-800 dark:bg-gray-900/30"
               >
-                <p className="text-sm leading-6 text-slate-600 dark:text-stone-300">{signal}</p>
+                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{signal}</p>
               </div>
             ))}
           </div>

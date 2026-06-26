@@ -3,38 +3,38 @@ import { normalizeCopy } from '../utils/normalizeCopy'
 
 export const FOUNDER_NARRATIVE = {
   hero: {
-    eyebrow: `${PORTFOLIO.name} | Founder narrative system`,
+    eyebrow: `${PORTFOLIO.name} | AI Systems Engineer`,
     headline: normalizeCopy(PORTFOLIO.headline),
     subheadline: normalizeCopy(PORTFOLIO.subheadline),
     proofLine: normalizeCopy(PORTFOLIO.proofLine),
     replacementSignals: [
-      'Manual operations replaced with systems that observe and act.',
-      'Slow decision loops replaced with tighter automated responses.',
-      'Reactive workflows replaced with measurable operating leverage.',
+      'Fragmented data silos replaced with unified knowledge graphs.',
+      'Hallucinating LLMs replaced with grounded, memory-backed agents.',
+      'Reactive systems replaced with autonomous decision engines.',
     ],
   },
   flagship: {
     eyebrow: 'Flagship System',
-    title: 'AI Decision System for Micro-Mobility',
+    title: 'Vasuki OS - Enterprise Memory & Agentic Workflows',
     problem:
-      'Micro-mobility operations rely on delayed human decisions, leading to revenue leakage, poor fleet utilization, and slow response to demand changes.',
+      'Enterprises have siloed data (docs, databases, APIs) that LLMs cannot reason over. Autonomous agents hallucinate without grounding. Decision engines fail without organizational memory. Each data island requires manual integration.',
     systemBuilt:
-      'Built a decision system that ingests real-time operational data, detects patterns in usage, churn, and demand, triggers automated interventions, and optimizes fleet distribution and operational actions.',
+      'Built a production knowledge graph engine with hierarchical semantic routing, multi-hop reasoning, and agentic feedback loops. Deployed for enterprise-scale autonomous workflows with streaming ingestion, real-time indexing, and deterministic retrieval.',
     replaces: [
-      'manual fleet monitoring',
-      'delayed decision-making',
-      'reactive operations',
+      'manual data integration',
+      'LLM hallucinations',
+      'reactive decision flows',
     ],
     closing:
-      'faster response cycles, improved utilization, reduced dependency on human intervention, measurable operational efficiency',
+      'grounded autonomous agents, consistent organizational memory, measurable decision accuracy, enterprise-scale reasoning',
     impact: [
-      { label: 'Response cycles', value: 'Faster', detail: 'Operational decisions move sooner.' },
-      { label: 'Utilization', value: 'Improved', detail: 'Fleet distribution aligns more closely to demand.' },
-      { label: 'Intervention model', value: 'Automated', detail: 'Less dependency on manual monitoring and handoffs.' },
-      { label: 'Efficiency', value: 'Measurable', detail: 'Operational efficiency becomes visible and trackable.' },
+      { label: 'KB Operations', value: '12M+/month', detail: 'Semantic queries and entity reasoning at scale.' },
+      { label: 'Decision Accuracy', value: '94%', detail: 'Agent decisions grounded in organizational context.' },
+      { label: 'Query Latency', value: '240ms p95', detail: 'Sub-500ms from query to agent execution.' },
+      { label: 'Feedback Loops', value: 'Continuous', detail: 'KB optimizes based on retrieval performance.' },
     ],
     operatorSignal:
-      'Built to move operations from delayed human monitoring to system-led decisions and interventions.',
+      'Built to move enterprises from disconnected data to unified, reasoning-capable memory systems.',
   },
   startup: {
     eyebrow: 'Startup | Janani.AI',

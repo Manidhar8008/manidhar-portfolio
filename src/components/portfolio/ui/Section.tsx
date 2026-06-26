@@ -20,12 +20,12 @@ export default function Section({
 }: SectionProps) {
   const backgroundClass =
     tone === 'alt'
-      ? 'bg-stone-100 dark:bg-[#0d1320]'
-      : 'bg-stone-50 dark:bg-[#0a0f1a]'
+      ? 'bg-gray-50 dark:bg-gray-900/20'
+      : 'bg-white dark:bg-black'
 
   return (
     <section id={id} className={`${backgroundClass} ${className}`.trim()}>
-      <Container className={`py-[100px] sm:py-[100px] lg:py-[100px] ${containerClassName}`.trim()}>
+      <Container className={`py-20 sm:py-24 lg:py-28 ${containerClassName}`.trim()}>
         {children}
       </Container>
     </section>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import AiLabSection from './components/portfolio/AiLabSection'
 import CaseStudiesSection from './components/portfolio/CaseStudiesSection'
 import Contact from './components/portfolio/Contact'
+import DeploymentEvidence from './components/portfolio/DeploymentEvidence'
 import ExecutionUnits from './components/portfolio/ExecutionUnits'
 import ExperienceSection from './components/portfolio/ExperienceSection'
 import FlagshipSystem from './components/portfolio/FlagshipSystem'
@@ -9,7 +10,7 @@ import Hero from './components/portfolio/Hero'
 import HowIThinkSection from './components/portfolio/HowIThinkSection'
 import PortfolioFooter from './components/portfolio/PortfolioFooter'
 import PortfolioNav from './components/portfolio/PortfolioNav'
-import StartupSystem from './components/portfolio/StartupSystem'
+import TechnicalStack from './components/portfolio/TechnicalStack'
 import WritingSection from './components/portfolio/WritingSection'
 
 type ThemeMode = 'light' | 'dark'
@@ -44,10 +45,11 @@ export default function App() {
       <main className="relative z-10">
         <Hero />
         <FlagshipSystem />
-        <StartupSystem />
-        <ExecutionUnits />
+        <DeploymentEvidence />
+        <TechnicalStack />
         <CaseStudiesSection />
         <ExperienceSection />
+        <ExecutionUnits />
         <HowIThinkSection />
         <AiLabSection />
         <WritingSection />

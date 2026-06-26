@@ -9,15 +9,15 @@ type HeadingProps = {
 
 export default function Heading({ eyebrow, title, description, className = '' }: HeadingProps) {
   return (
-    <div className={`max-w-[700px] ${className}`.trim()}>
-      <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-teal-800 dark:text-teal-300">
+    <div className={`max-w-3xl ${className}`.trim()}>
+      <p className="font-mono text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
         {eyebrow}
       </p>
-      <h2 className="mt-4 font-display text-4xl leading-[0.98] tracking-[-0.04em] text-slate-900 sm:text-5xl dark:text-stone-100">
+      <h2 className="mt-4 text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white leading-tight">
         {title}
       </h2>
       {description ? (
-        <p className="mt-5 max-w-[700px] text-base leading-7 text-slate-600 sm:text-lg dark:text-stone-300">
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-gray-600 dark:text-gray-300">
           {description}
         </p>
       ) : null}
