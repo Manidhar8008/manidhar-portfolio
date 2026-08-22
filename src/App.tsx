@@ -9,6 +9,7 @@ import Hero from './components/portfolio/Hero'
 import HowIThinkSection from './components/portfolio/HowIThinkSection'
 import PortfolioFooter from './components/portfolio/PortfolioFooter'
 import PortfolioNav from './components/portfolio/PortfolioNav'
+import Solopreneurship90Days from './components/portfolio/Solopreneurship90Days'
 import StartupSystem from './components/portfolio/StartupSystem'
 import WritingSection from './components/portfolio/WritingSection'
 
@@ -52,6 +53,7 @@ export default function App() {
         <AiLabSection />
         <WritingSection />
         <Contact />
+        <Solopreneurship90Days />
       </main>
 
       <PortfolioFooter />
