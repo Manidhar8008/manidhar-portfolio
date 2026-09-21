@@ -7,8 +7,8 @@ export default function CaseStudiesSection() {
     <Section id="case-studies" tone="alt">
       <Heading
         eyebrow="Selected Work"
-        title="Three systems. Three different problems."
-        description="I like projects where the interesting part is the loop between messy inputs, a decision, and an outcome."
+        title="The work behind the idea."
+        description="Vasuki is the long-running system. Janani and the ML work show how the same systems instinct changes shape across domains."
       />
 
       <div className="case-grid">
