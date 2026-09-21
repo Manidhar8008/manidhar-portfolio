@@ -15,19 +15,17 @@ export default function Section({
   children,
   className = '',
   containerClassName = '',
-  divided: _divided = false,
+  divided = true,
   tone = 'base',
 }: SectionProps) {
-  const backgroundClass =
-    tone === 'alt'
-      ? 'bg-gray-50 dark:bg-gray-900/20'
-      : 'bg-white dark:bg-black'
+  const toneClass = tone === 'alt' ? 'section--alt' : 'section--base'
 
   return (
-    <section id={id} className={`${backgroundClass} ${className}`.trim()}>
-      <Container className={`py-20 sm:py-24 lg:py-28 ${containerClassName}`.trim()}>
-        {children}
-      </Container>
+    <section
+      id={id}
+      className={`section ${toneClass} ${divided ? 'section--divided' : ''} ${className}`.trim()}
+    >
+      <Container className={containerClassName}>{children}</Container>
     </section>
   )
 }
