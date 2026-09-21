@@ -10,6 +10,7 @@ import HowIThinkSection from './components/portfolio/HowIThinkSection'
 import PortfolioFooter from './components/portfolio/PortfolioFooter'
 import PortfolioNav from './components/portfolio/PortfolioNav'
 import TechnicalStack from './components/portfolio/TechnicalStack'
+import PortfolioEffects from './components/portfolio/PortfolioEffects'
 import WritingSection from './components/portfolio/WritingSection'
 
 type ThemeMode = 'light' | 'dark'
@@ -35,6 +36,7 @@ export default function App() {
         theme={theme}
         onToggleTheme={() => setTheme((current) => (current === 'light' ? 'dark' : 'light'))}
       />
+      <PortfolioEffects />
       <main>
         <Hero />
         <FlagshipSystem />
