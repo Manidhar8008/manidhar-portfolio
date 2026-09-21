@@ -59,8 +59,8 @@ export const PORTFOLIO: PortfolioData = {
   name: 'Manidhar Pati',
   headline: 'AI Systems Engineer · Knowledge Graphs · Agentic Workflows',
   subheadline: 'Building enterprise memory systems and autonomous decision engines.',
-  proofLine: 'Vasuki OS (prod) · 12M+ KB operations/month · 94% decision accuracy',
-  proofStats: ['Vasuki OS (production)', '12M+ KB operations/month', '94% decision accuracy'],
+  proofLine: 'Vasuki OS · personal intelligence infrastructure · agentic workflows',
+  proofStats: ['Vasuki OS', 'Personal AI infrastructure', 'Agentic workflows'],
   snapshot: [
     'Enterprise ops at Cognizant & Genpact: led $5.5M O2C collections, recovered $2M, built automation + MIS dashboards with measurable P&L impact.',
     'Production AI: behavioral tracking + LLM coaching (Janani AI), ML trading with backtesting & live execution (1.84 Sharpe ratio).',
@@ -71,7 +71,7 @@ export const PORTFOLIO: PortfolioData = {
   caseStudies: [
     {
       id: 'vasuki-os',
-      title: 'Vasuki OS - Enterprise Memory System',
+      title: 'Vasuki OS - Personal Intelligence Operating System',
       summary:
         'Production knowledge graph engine with agentic retrieval, semantic routing, and autonomous decision execution. Powers enterprise-scale autonomous workflows.',
       problem:
@@ -112,17 +112,17 @@ export const PORTFOLIO: PortfolioData = {
         {
           label: 'Signal Processing',
           value: '8,400+/month',
-          detail: 'Across 12 behavior categories with cryptographically signed audit logs.',
+          detail: 'Signals are organized into behavior categories and retained as part of the feedback loop.',
         },
         {
           label: 'Intervention Latency',
           value: '3.2 seconds',
-          detail: 'From behavior detection to AI coaching delivery via local inference.',
+          detail: 'Designed for rapid intervention after a behavior signal is detected.',
         },
         {
           label: 'Workflow Automation',
           value: '65% time saved',
-          detail: 'End-to-end content + scheduling: 8 hrs/week → 2.8 hrs/week.',
+          detail: 'Automation is used to reduce repetitive content and scheduling work.',
         },
       ],
       closing:
