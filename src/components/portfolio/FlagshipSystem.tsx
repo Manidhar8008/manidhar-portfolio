@@ -25,15 +25,15 @@ export default function FlagshipSystem() {
         <div className="architecture">
           <div className="architecture__intro">
             <p className="eyebrow">How it works</p>
-            <p>Memory → reasoning → action → feedback. The point is not another chatbot; it is a durable operating loop.</p>
+            <p>Memory → retrieval → reasoning → action → feedback. The point is a durable personal operating loop.</p>
           </div>
           <div className="architecture__flow">
             {[
-              ['01', 'Ingest', 'Capture operational data and events'],
-              ['02', 'Remember', 'Index entities, relationships and context'],
-              ['03', 'Reason', 'Route questions through semantic context'],
-              ['04', 'Act', 'Hand decisions to domain agents'],
-              ['05', 'Learn', 'Feed outcomes back into the system'],
+              ['01', 'Ingest', 'Capture files, notes, projects and events'],
+              ['02', 'Remember', 'Build structured memory across entities and relationships'],
+              ['03', 'Reason', 'Retrieve the right context before reasoning'],
+              ['04', 'Act', 'Turn reasoning into useful actions'],
+              ['05', 'Learn', 'Keep the memory and workflow state improving'],
             ].map(([index, title, detail], stepIndex) => (
               <div className="architecture__step" key={title}>
                 <span className="architecture__index">{index}</span>
