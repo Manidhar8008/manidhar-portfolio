@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import About from './components/portfolio/About'
 import AiLabSection from './components/portfolio/AiLabSection'
 import CaseStudiesSection from './components/portfolio/CaseStudiesSection'
 import Contact from './components/portfolio/Contact'
@@ -39,6 +40,7 @@ export default function App() {
       <PortfolioEffects />
       <main>
         <Hero />
+        <About />
         <FlagshipSystem />
         <CaseStudiesSection />
         <ExperienceSection />
