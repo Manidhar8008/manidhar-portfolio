@@ -4,47 +4,22 @@ import Section from './ui/Section'
 
 export default function ExecutionUnits() {
   return (
-    <Section id="projects" tone="base">
-      <div className="space-y-12">
-        <Heading
-          eyebrow="Projects"
-          title="Execution units."
-          description="Systems inventory."
-        />
+    <Section id="projects">
+      <Heading eyebrow="Other Builds" title="The rest of the workshop." description="Smaller systems that show the range: orchestration, career automation and operational tooling." />
 
-        <div className="grid gap-6 lg:grid-cols-2">
-          {FOUNDER_NARRATIVE.executionUnits.map((unit) => (
-            <article
-              key={unit.title}
-              className="rounded-xl bg-[#111827] px-6 py-6 shadow-[0_16px_36px_rgba(15,23,42,0.04)]"
-            >
-              <div className="space-y-4">
-                <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-teal-300">
-                  {unit.context}
-                </p>
-                <h3 className="font-display text-3xl font-semibold leading-tight tracking-[-0.04em] text-white">
-                  {unit.title}
-                </h3>
-                <p className="text-[15px] leading-7 text-slate-300">{unit.detail}</p>
-              </div>
-
-              <div className="mt-6 grid gap-5">
-                <div>
-                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-rose-300">
-                    Replaces
-                  </p>
-                  <p className="mt-3 text-[15px] leading-7 text-rose-100/85">{unit.replaces}</p>
-                </div>
-                <div>
-                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-teal-300">
-                    Drives
-                  </p>
-                  <p className="mt-3 text-[15px] leading-7 text-teal-50">{unit.outcome}</p>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
+      <div className="workshop-grid">
+        {FOUNDER_NARRATIVE.executionUnits.map((unit, index) => (
+          <article className="workshop-card" key={unit.title}>
+            <span className="workshop-card__index">{String(index + 1).padStart(2, '0')}</span>
+            <p className="eyebrow">{unit.context}</p>
+            <h3>{unit.title}</h3>
+            <p>{unit.detail}</p>
+            <div className="workshop-card__split">
+              <div><span>Replaces</span><p>{unit.replaces}</p></div>
+              <div><span>Drives</span><p>{unit.outcome}</p></div>
+            </div>
+          </article>
+        ))}
       </div>
     </Section>
   )
