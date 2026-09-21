@@ -73,11 +73,11 @@ export const PORTFOLIO: PortfolioData = {
       id: 'vasuki-os',
       title: 'Vasuki OS - Personal Intelligence Operating System',
       summary:
-        'Production knowledge graph engine with agentic retrieval, semantic routing, and autonomous decision execution. Powers enterprise-scale autonomous workflows.',
+        'Local-first personal intelligence system bringing memory, retrieval, reasoning and execution into one architecture.',
       problem:
-        'Enterprises have fragmented data islands (docs, DBs, APIs). LLM-only systems hallucinate. Decision engines lack grounding in organizational memory. Autonomous agents fail without consistent context.',
+        'Useful personal context is fragmented across files, apps, devices and projects. Most assistants only see the current prompt and forget the history that should shape the next action.',
       systemBuilt:
-        'Hierarchical knowledge graph + multi-hop reasoning + semantic routing to domain agents + feedback loops for continuous KB optimization. Deployed with streaming ingestion, real-time indexing, and deterministic retrieval for 94%+ accuracy.',
+        'Ingestion + structured metadata + entity relationships + vector retrieval + local model orchestration + agent execution, with the memory layer treated as the durable source of context.',
       impact: [
         {
           label: 'Knowledge Graph Operations',
@@ -96,7 +96,7 @@ export const PORTFOLIO: PortfolioData = {
         },
       ],
       closing:
-        'Demonstrates that enterprise autonomous systems require grounded memory, semantic reasoning, and feedback loops—not just prompt engineering.',
+        'The project is an attempt to make a personal computer feel less like a pile of disconnected tools and more like a coherent memory-and-action system.',
       githubUrl: 'https://github.com/Manidhar8008',
     },
     {
