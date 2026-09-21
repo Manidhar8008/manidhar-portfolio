@@ -1,63 +1,99 @@
+import { useEffect, useState } from 'react'
 import { PORTFOLIO } from '../../content/portfolio'
 import Container from './ui/Container'
 
 const NAV_LINKS = [
-  { href: '#flagship', label: 'Vasuki OS' },
-  { href: '#deployment', label: 'Deployment' },
-  { href: '#technical-stack', label: 'Stack' },
-  { href: '#case-studies', label: 'Cases' },
+  { href: '#flagship', label: 'Vasuki' },
+  { href: '#case-studies', label: 'Work' },
   { href: '#experience', label: 'Experience' },
+  { href: '#how-i-think', label: 'Thinking' },
+  { href: '#ai-lab', label: 'Lab' },
   { href: '#contact', label: 'Contact' },
 ]
 
-type PortfolioNavProps = {
-  theme: 'light' | 'dark'
-  onToggleTheme: () => void
-}
+type Props = { theme: 'light' | 'dark'; onToggleTheme: () => void }
 
-export default function PortfolioNav({ theme, onToggleTheme }: PortfolioNavProps) {
-  const isDarkMode = theme === 'dark'
+export default function PortfolioNav({ theme, onToggleTheme }: Props) {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const isDark = theme === 'dark'
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [menuOpen])
+
+  const go = (href: string) => {
+    setMenuOpen(false)
+    window.requestAnimationFrame(() => {
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+  }
 
   return (
-    <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200 dark:bg-black/80 dark:border-gray-800">
-      <Container className="flex min-h-16 items-center justify-between gap-6">
-        <a
-          href="#hero"
-          className="text-sm font-semibold tracking-tight text-gray-900 dark:text-white"
-        >
+    <header className="site-nav">
+      <Container className="site-nav__inner">
+        <a href="#hero" className="brand" onClick={() => setMenuOpen(false)}>
           {PORTFOLIO.name}
         </a>
 
-        <div className="flex items-center gap-6">
-          <nav aria-label="Primary" className="hidden lg:block">
-            <ul className="flex items-center gap-8">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+        <nav aria-label="Primary" className="site-nav__links">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={(event) => {
+                event.preventDefault()
+                go(link.href)
+              }}
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="site-nav__actions">
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={onToggleTheme}
+            aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+          >
+            <span aria-hidden="true">{isDark ? '☀' : '◐'}</span>
+            <span className="theme-toggle__label">{isDark ? 'Light' : 'Dark'}</span>
+          </button>
 
           <button
             type="button"
-            onClick={onToggleTheme}
-            aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
-            className="inline-flex items-center justify-center p-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 transition-colors"
+            className={`menu-toggle ${menuOpen ? 'is-open' : ''}`}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setMenuOpen((value) => !value)}
           >
-            {isDarkMode ? (
-              <span className="text-lg">☀️</span>
-            ) : (
-              <span className="text-lg">🌙</span>
-            )}
+            <span />
+            <span />
           </button>
         </div>
       </Container>
+
+      <div id="mobile-navigation" className={`mobile-menu ${menuOpen ? 'is-open' : ''}`}>
+        <Container className="mobile-menu__inner">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={(event) => {
+                event.preventDefault()
+                go(link.href)
+              }}
+            >
+              <span>{link.label}</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </Container>
+      </div>
     </header>
   )
 }
