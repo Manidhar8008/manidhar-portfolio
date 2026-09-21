@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import AiLabSection from './components/portfolio/AiLabSection'
 import CaseStudiesSection from './components/portfolio/CaseStudiesSection'
 import Contact from './components/portfolio/Contact'
-import DeploymentEvidence from './components/portfolio/DeploymentEvidence'
 import ExecutionUnits from './components/portfolio/ExecutionUnits'
 import ExperienceSection from './components/portfolio/ExperienceSection'
 import FlagshipSystem from './components/portfolio/FlagshipSystem'
@@ -14,16 +13,11 @@ import TechnicalStack from './components/portfolio/TechnicalStack'
 import WritingSection from './components/portfolio/WritingSection'
 
 type ThemeMode = 'light' | 'dark'
-
 const THEME_STORAGE_KEY = 'manidhar-portfolio-theme'
 
 function getInitialTheme(): ThemeMode {
-  if (typeof window === 'undefined') {
-    return 'light'
-  }
-
-  const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY)
-  return savedTheme === 'dark' ? 'dark' : 'light'
+  if (typeof window === 'undefined') return 'light'
+  return window.localStorage.getItem(THEME_STORAGE_KEY) === 'dark' ? 'dark' : 'light'
 }
 
 export default function App() {
@@ -36,26 +30,23 @@ export default function App() {
   }, [theme])
 
   return (
-    <div className="min-h-screen">
+    <div className="site-shell">
       <PortfolioNav
         theme={theme}
-        onToggleTheme={() => setTheme((currentTheme) => (currentTheme === 'light' ? 'dark' : 'light'))}
+        onToggleTheme={() => setTheme((current) => (current === 'light' ? 'dark' : 'light'))}
       />
-
-      <main className="relative z-10">
+      <main>
         <Hero />
         <FlagshipSystem />
-        <DeploymentEvidence />
-        <TechnicalStack />
         <CaseStudiesSection />
         <ExperienceSection />
         <ExecutionUnits />
         <HowIThinkSection />
+        <TechnicalStack />
         <AiLabSection />
         <WritingSection />
         <Contact />
       </main>
-
       <PortfolioFooter />
     </div>
   )
