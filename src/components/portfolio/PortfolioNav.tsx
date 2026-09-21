@@ -3,6 +3,7 @@ import { PORTFOLIO } from '../../content/portfolio'
 import Container from './ui/Container'
 
 const NAV_LINKS = [
+  { href: '#about', label: 'About' },
   { href: '#flagship', label: 'Vasuki' },
   { href: '#case-studies', label: 'Work' },
   { href: '#experience', label: 'Experience' },
