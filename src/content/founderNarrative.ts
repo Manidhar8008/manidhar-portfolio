@@ -15,26 +15,26 @@ export const FOUNDER_NARRATIVE = {
   },
   flagship: {
     eyebrow: 'Flagship System',
-    title: 'Vasuki OS - Enterprise Memory & Agentic Workflows',
+    title: 'Vasuki OS - Personal Intelligence Operating System',
     problem:
-      'Enterprises have siloed data (docs, databases, APIs) that LLMs cannot reason over. Autonomous agents hallucinate without grounding. Decision engines fail without organizational memory. Each data island requires manual integration.',
+      'Useful personal context is fragmented across files, apps, devices and projects. Most assistants only see the current prompt and forget the history that should shape the next action.',
     systemBuilt:
-      'Built a production knowledge graph engine with hierarchical semantic routing, multi-hop reasoning, and agentic feedback loops. Deployed for enterprise-scale autonomous workflows with streaming ingestion, real-time indexing, and deterministic retrieval.',
+      'A local-first personal intelligence architecture for ingestion, metadata, entities, relationships, retrieval, memory and agent execution. The memory layer is designed to become the durable source of context across tools and workflows.',
     replaces: [
-      'manual data integration',
-      'LLM hallucinations',
-      'reactive decision flows',
+      'scattered personal context',
+      'repeated manual lookup',
+      'tool-by-tool workflows',
     ],
     closing:
-      'grounded autonomous agents, consistent organizational memory, measurable decision accuracy, enterprise-scale reasoning',
+      'Vasuki is the clearest expression of how I think: collect context, make it retrievable, reason over it, then turn the result into action.',
     impact: [
-      { label: 'KB Operations', value: '12M+/month', detail: 'Semantic queries and entity reasoning at scale.' },
-      { label: 'Decision Accuracy', value: '94%', detail: 'Agent decisions grounded in organizational context.' },
-      { label: 'Query Latency', value: '240ms p95', detail: 'Sub-500ms from query to agent execution.' },
-      { label: 'Feedback Loops', value: 'Continuous', detail: 'KB optimizes based on retrieval performance.' },
+      { label: 'Memory model', value: 'Graph + vector', detail: 'Structured entities and semantic retrieval working together.' },
+      { label: 'Design constraint', value: 'Local-first', detail: 'Privacy, user control and offline capability are first-class constraints.' },
+      { label: 'Core loop', value: 'Memory → action', detail: 'Context is meant to feed useful execution, not sit in storage.' },
+      { label: 'System shape', value: 'Ingestion → agents', detail: 'The architecture connects collection, retrieval, reasoning and execution.' },
     ],
     operatorSignal:
-      'Built to move enterprises from disconnected data to unified, reasoning-capable memory systems.',
+      'The flagship project behind my current work: a personal operating layer that turns accumulated context into usable intelligence.',
   },
   startup: {
     eyebrow: 'Startup | Janani.AI',
@@ -59,7 +59,7 @@ export const FOUNDER_NARRATIVE = {
   },
   executionUnits: [
     {
-      title: 'JAN.AI',
+      title: 'Jan.AI',
       context: 'Execution unit',
       detail:
         'An intelligent automation framework designed to orchestrate complex multi-platform workflows and execute autonomous decision-making.',
