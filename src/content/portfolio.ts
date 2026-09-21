@@ -63,7 +63,7 @@ export const PORTFOLIO: PortfolioData = {
   proofStats: ['Vasuki OS', 'Personal AI infrastructure', 'Agentic workflows'],
   snapshot: [
     'Enterprise ops at Cognizant & Genpact: led $5.5M O2C collections, recovered $2M, built automation + MIS dashboards with measurable P&L impact.',
-    'Production AI: behavioral tracking + LLM coaching (Janani AI), ML trading with backtesting & live execution (1.84 Sharpe ratio).',
+    'AI systems work: Janani.AI for behavioral intervention, ML experiments for systematic decision-making, and automation across content and operations.',
     'Recent projects: NLP resume analyzer (spaCy), crypto strategy with full backtesting, Power BI dashboards, social automation.',
     'Operationalized psychology + data skills -> full AI builder practice. No tutorials. Only systems that solve real problems.',
     'Running mw.ai: behavioral systems, automation infrastructure, SMB AI tools.',
