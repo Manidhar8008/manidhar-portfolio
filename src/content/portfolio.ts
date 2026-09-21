@@ -57,8 +57,8 @@ export type PortfolioData = {
 
 export const PORTFOLIO: PortfolioData = {
   name: 'Manidhar Pati',
-  headline: 'AI Systems Engineer · Knowledge Graphs · Agentic Workflows',
-  subheadline: 'Building enterprise memory systems and autonomous decision engines.',
+  headline: 'I build AI systems that turn messy context into useful action.',
+  subheadline: 'From enterprise operations to Vasuki OS, Janani.AI and autonomous workflows, I keep coming back to the same loop: observe → understand → act → learn.',
   proofLine: 'Vasuki OS · personal intelligence infrastructure · agentic workflows',
   proofStats: ['Vasuki OS', 'Personal AI infrastructure', 'Agentic workflows'],
   snapshot: [
@@ -80,19 +80,19 @@ export const PORTFOLIO: PortfolioData = {
         'Ingestion + structured metadata + entity relationships + vector retrieval + local model orchestration + agent execution, with the memory layer treated as the durable source of context.',
       impact: [
         {
-          label: 'Knowledge Graph Operations',
-          value: '12M+/month',
-          detail: 'Semantic queries, entity relationships, and multi-hop inference at enterprise scale.',
+          label: 'Memory model',
+          value: 'Graph + vector',
+          detail: 'Structured entities and semantic retrieval working together.',
         },
         {
-          label: 'Decision Accuracy',
-          value: '94%',
-          detail: 'Agent decisions grounded in organizational context, validated against knowledge base.',
+          label: 'Design constraint',
+          value: 'Local-first',
+          detail: 'Privacy, user control and offline capability are first-class constraints.',
         },
         {
-          label: 'Query Latency',
-          value: '240ms p95',
-          detail: 'Sub-500ms response time from semantic query to routed agent execution.',
+          label: 'Core loop',
+          value: 'Memory → action',
+          detail: 'Context is meant to feed useful execution, not sit in storage.',
         },
       ],
       closing:
@@ -126,33 +126,33 @@ export const PORTFOLIO: PortfolioData = {
         },
       ],
       closing:
-        'Proves that real-time behavior systems with tight feedback loops outperform post-hoc analysis and generic coaching.',
+        'Janani is where the behavioral side of the architecture becomes a product: observe, interpret, intervene, learn.',
       githubUrl: 'https://github.com/Manidhar8008',
     },
     {
       id: 'algo-trading-ml',
-      title: 'ML Trading System - Autonomous Execution',
+      title: 'ML Trading System - Systematic Execution',
       summary:
-        'Production trading engine with backtesting, feature engineering, ensemble predictions, and automated execution with monitoring.',
+        'A systematic ML trading project exploring feature engineering, rolling backtests, confidence-based decisions and automated execution.',
       problem:
         'Retail trading was discretionary and unlogged. No fast validation cycles. No continuous retraining. No systematic risk control.',
       systemBuilt:
         'Rolling backtests + feature generation + ensemble with confidence scoring + automated execution + retraining signals + live performance monitoring.',
       impact: [
         {
-          label: 'Sharpe Ratio',
-          value: '1.84',
-          detail: 'Consistent risk-adjusted returns across 18-month production run.',
+          label: 'Evaluation',
+          value: 'Rolling backtests',
+          detail: 'Strategies are evaluated continuously rather than by one static backtest.',
         },
         {
-          label: 'Max Drawdown',
-          value: '8.3% vs 19.7%',
-          detail: 'Algorithm-controlled risk vs typical discretionary trading.',
+          label: 'Risk lens',
+          value: 'Drawdown-aware',
+          detail: 'Risk and drawdown are treated as first-class decision variables.',
         },
         {
-          label: 'Decision Latency',
-          value: '87ms',
-          detail: 'From market data ingestion to live trade execution.',
+          label: 'Execution',
+          value: 'Automated',
+          detail: 'The project explores the full path from market data to systematic execution.',
         },
       ],
       closing:
